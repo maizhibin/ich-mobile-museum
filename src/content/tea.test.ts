@@ -12,5 +12,8 @@ describe("茶文化馆内容", () => {
         disclosure.includes("非独立 UNESCO 项目"),
       ),
     ).toBe(true);
+    expect(teaExhibition.makingPaths).toHaveLength(3);
+    expect(teaExhibition.socialContexts).toHaveLength(3);
+    expect(teaExhibition.teaWare).toHaveLength(4);
   });
 });

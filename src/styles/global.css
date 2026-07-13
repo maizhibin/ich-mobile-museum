@@ -879,6 +879,238 @@ a:focus-visible {
   font-size: 12px;
   line-height: 1.6;
 }
+.tea-explorer {
+  display: grid;
+  gap: 28px;
+}
+.tea-map,
+.tea-social,
+.tea-ware {
+  padding: 22px;
+  border-radius: 22px;
+  background: #eef1e5;
+}
+.tea-map h2,
+.tea-social h2,
+.tea-ware h2,
+.tea-lab h2 {
+  margin: 7px 0 14px;
+  font:
+    700 25px "Noto Serif SC",
+    serif;
+}
+.tea-region-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 18px;
+}
+.tea-region-grid button {
+  min-height: 106px;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid #d3dbc7;
+  border-radius: 16px;
+  color: #344d3a;
+  background: #fffdf7;
+  text-align: left;
+  cursor: pointer;
+}
+.tea-region-grid button:last-child {
+  grid-column: 1 / -1;
+}
+.tea-region-grid span,
+.tea-region-grid small {
+  color: #667562;
+  font-size: 12px;
+}
+.tea-region-grid small {
+  width: fit-content;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #e2ecd8;
+}
+.tea-lab {
+  padding: 24px 20px;
+  margin: 0 -20px;
+  color: white;
+  background: #3f5844;
+}
+.tea-lab .eyebrow {
+  color: #d6e8ba;
+}
+.tea-lab-picker {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 12px;
+}
+.tea-lab-picker button {
+  min-height: 62px;
+  display: grid;
+  gap: 4px;
+  padding: 12px 15px;
+  border: 1px solid #ffffff3b;
+  border-radius: 14px;
+  color: #dfead2;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.tea-lab-picker button.active {
+  border-color: #d8e9ad;
+  color: #2f4434;
+  background: #e5efc9;
+}
+.tea-lab-picker button span {
+  font-size: 12px;
+}
+.tea-lab-result {
+  padding: 18px;
+  border-radius: 16px;
+  background: #283a2d;
+}
+.tea-lab-result > p {
+  margin: 0;
+  color: #edf2dd;
+  line-height: 1.75;
+}
+.tea-lab-result ol {
+  display: grid;
+  gap: 9px;
+  padding: 0;
+  margin: 16px 0;
+  list-style: none;
+}
+.tea-lab-result li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #dfe9d1;
+  font-size: 13px;
+}
+.tea-lab-result li span {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 50%;
+  color: #36503b;
+  background: #dcebb9;
+  font-size: 12px;
+  font-weight: 700;
+}
+.tea-lab-result > div,
+.tea-context-result > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.tea-lab-result > div span {
+  padding: 5px 9px;
+  border: 1px solid #ffffff36;
+  border-radius: 999px;
+  color: #dce8cd;
+  font-size: 12px;
+}
+.tea-lab-result small {
+  display: block;
+  margin-top: 15px;
+  color: #bed0b7;
+  font-size: 11px;
+  line-height: 1.65;
+}
+.tea-context-picker,
+.tea-ware-picker {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 5px 1px 12px;
+}
+.tea-context-picker button,
+.tea-ware-picker button {
+  min-height: 44px;
+  padding: 0 14px;
+  flex: 0 0 auto;
+  border: 1px solid #c8d1bd;
+  border-radius: 999px;
+  color: #48634d;
+  background: #fffdf8;
+  cursor: pointer;
+  font-weight: 700;
+}
+.tea-context-picker button.active,
+.tea-ware-picker button.active {
+  border-color: #48634d;
+  color: white;
+  background: #48634d;
+}
+.tea-context-result {
+  padding: 18px;
+  border-radius: 16px;
+  background: #fffdf7;
+}
+.tea-context-result > strong {
+  display: block;
+  line-height: 1.7;
+}
+.tea-context-result > p {
+  color: #5b6557;
+  line-height: 1.8;
+}
+.tea-context-result div span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #48634d;
+  background: #e3ecd9;
+  font-size: 12px;
+}
+.tea-ware-result {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 17px;
+  align-items: center;
+  padding: 19px;
+  border-radius: 16px;
+  color: white;
+  background: #4b4237;
+}
+.tea-ware-result > span {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  place-items: center;
+  border: 1px solid #f1dec480;
+  border-radius: 50% 50% 43% 43%;
+  color: #f1dec4;
+  font:
+    700 30px "Noto Serif SC",
+    serif;
+}
+.tea-ware-result p {
+  margin: 0;
+  color: #e9ddd0;
+  line-height: 1.7;
+  font-size: 13px;
+}
+.tea-ware-result p:first-child {
+  color: #d9bd99;
+  font-weight: 700;
+}
+.tea-ware-result h3 {
+  margin: 4px 0 7px;
+  font:
+    700 23px "Noto Serif SC",
+    serif;
+}
+.tea-ware-result small {
+  display: block;
+  margin-top: 10px;
+  color: #cebfae;
+  line-height: 1.6;
+  font-size: 11px;
+}
 .topic-section {
   padding-top: 68px;
   margin-top: -34px;

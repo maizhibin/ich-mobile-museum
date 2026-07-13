@@ -142,4 +142,11 @@ test("茶文化馆提供可分享的工序流程与地方实践比较", async ({
   await page.getByRole("tab", { name: "铁观音" }).click();
   await expect(page.getByRole("tabpanel")).toContainText("铁观音");
   await expect(page.getByRole("tabpanel")).toContainText("非独立 UNESCO 项目");
+  await page.getByRole("link", { name: "探索", exact: true }).click();
+  await page.getByRole("button", { name: /乌龙茶观察路径/ }).click();
+  await expect(page.getByText("摇青与静置交替")).toBeVisible();
+  await page.getByRole("radio", { name: "节日团聚" }).click();
+  await expect(page.getByText("团聚或婚礼等重要日子里")).toBeVisible();
+  await page.getByRole("button", { name: "茶盘", exact: true }).click();
+  await expect(page.getByText("承接一席茶的动作")).toBeVisible();
 });

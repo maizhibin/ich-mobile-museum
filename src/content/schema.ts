@@ -163,6 +163,41 @@ export const teaExhibitionSchema = z
         }),
       )
       .length(5),
+    makingPaths: z
+      .array(
+        z.object({
+          id: z.string().regex(/^[a-z0-9-]+$/),
+          title: z.string().min(1),
+          label: z.string().min(1),
+          summary: z.string().min(1),
+          focusSteps: z.array(z.string().regex(/^[a-z0-9-]+$/)).min(1),
+          processNotes: z.array(z.string().min(1)).min(2),
+          disclosure: z.string().min(1),
+        }),
+      )
+      .min(3),
+    socialContexts: z
+      .array(
+        z.object({
+          id: z.string().regex(/^[a-z0-9-]+$/),
+          title: z.string().min(1),
+          prompt: z.string().min(1),
+          response: z.string().min(1),
+          keywords: z.array(z.string().min(1)).min(1),
+        }),
+      )
+      .min(3),
+    teaWare: z
+      .array(
+        z.object({
+          id: z.string().regex(/^[a-z0-9-]+$/),
+          name: z.string().min(1),
+          role: z.string().min(1),
+          description: z.string().min(1),
+          materialHint: z.string().min(1),
+        }),
+      )
+      .min(4),
   })
   .superRefine((exhibition, context) => {
     const stepIds = new Set(exhibition.process.steps.map(({ id }) => id));
@@ -178,6 +213,17 @@ export const teaExhibitionSchema = z
               focusIndex,
             ],
             message: "地方实践必须引用已有工序 ID",
+          });
+        }
+      });
+    });
+    exhibition.makingPaths.forEach((path, pathIndex) => {
+      path.focusSteps.forEach((stepId, focusIndex) => {
+        if (!stepIds.has(stepId)) {
+          context.addIssue({
+            code: "custom",
+            path: ["makingPaths", pathIndex, "focusSteps", focusIndex],
+            message: "制茶观察路径必须引用已有工序 ID",
           });
         }
       });

@@ -7,10 +7,12 @@ import { IdentityBadge } from "../components/IdentityBadge";
 import { teaExhibition } from "../content/tea";
 import { ProcessFlow } from "../features/process/ProcessFlow";
 import { TeaPracticeCompare } from "../features/tea/TeaPracticeCompare";
+import { TeaCultureExplorer } from "../features/tea/TeaCultureExplorer";
 
 const topics = [
   { id: "intro", label: "初识" },
   { id: "process", label: "流程" },
+  { id: "explore", label: "探索" },
   { id: "practices", label: "实践" },
   { id: "sources", label: "来源" },
 ] as const;
@@ -109,6 +111,9 @@ export const TeaPage = () => {
             activeStepId={activeStep}
             onStepChange={updateStep}
           />
+        </section>
+        <section id="explore" className="topic-section">
+          <TeaCultureExplorer exhibition={teaExhibition} />
         </section>
         <section id="practices" className="topic-section">
           <TeaPracticeCompare exhibition={teaExhibition} />
