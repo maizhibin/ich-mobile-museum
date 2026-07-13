@@ -1,0 +1,35 @@
+[
+  {
+    "id": "jingju",
+    "name": "京剧",
+    "place": "北京",
+    "theme": "戏曲与表演",
+    "summary": "一桌二椅，演尽人间万象。",
+    "description": "从行当、脸谱、唱做念打和舞台空间，认识京剧台前幕后的声音与手艺。",
+    "cover": "assets/jingju-backstage.png",
+    "durationMinutes": 8,
+    "featured": true
+  },
+  {
+    "id": "traditional-tea",
+    "name": "中国传统制茶技艺",
+    "place": "中国多地",
+    "theme": "茶与生活",
+    "summary": "从一片鲜叶到一盏清香。",
+    "description": "沿着采茶、制茶、泡茶、茶礼和茶器，理解茶如何连接地方生活。",
+    "cover": "assets/museum-hero.png",
+    "durationMinutes": 5,
+    "featured": true
+  },
+  {
+    "id": "paper-cut",
+    "name": "中国剪纸",
+    "place": "中国多地",
+    "theme": "手工艺",
+    "summary": "一张纸里，藏着生活的祝愿。",
+    "description": "观察折叠、画样、剪刻与展开，发现纹样与社区记忆。",
+    "cover": "assets/museum-hero.png",
+    "durationMinutes": 4,
+    "featured": false
+  }
+]
