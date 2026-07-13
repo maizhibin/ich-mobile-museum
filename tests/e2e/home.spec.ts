@@ -24,6 +24,27 @@ test("可以浏览专题馆并搜索 45 项清单", async ({ page }) => {
   await expect(page.getByText("找到 1 项")).toBeVisible();
 });
 
+test("京剧展厅目录可以定位章节而不丢失路由", async ({ page }) => {
+  await page.goto("/ich-mobile-museum/#/exhibitions/jingju");
+
+  for (const topic of [
+    { id: "intro", label: "初识" },
+    { id: "roles", label: "行当" },
+    { id: "skills", label: "功法" },
+    { id: "stage", label: "舞台" },
+    { id: "compare", label: "比较" },
+  ]) {
+    await page.getByRole("link", { name: topic.label, exact: true }).click();
+    await expect(page).toHaveURL(
+      new RegExp(`#/exhibitions/jingju\\?section=${topic.id}$`),
+    );
+    await expect(page.locator(`#${topic.id}`)).toBeInViewport();
+    await expect(
+      page.getByRole("heading", { name: "京剧", exact: true }),
+    ).toBeAttached();
+  }
+});
+
 test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async ({ page }) => {
   await page.goto("/ich-mobile-museum/#/exhibitions/jingju");
   await expect(

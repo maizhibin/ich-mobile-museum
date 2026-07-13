@@ -1,5 +1,6 @@
 import { Heart, Rotate3D } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { useUserPreferences } from "../app/UserPreferences";
 import { AppHeader } from "../components/AppHeader";
 import { IdentityBadge } from "../components/IdentityBadge";
@@ -19,12 +20,38 @@ const skills = [
   { name: "做", description: "以手、眼、身、法、步表现行动与内心。" },
   { name: "打", description: "把武术动作提炼为有节奏的舞台表演。" },
 ];
+const topics = [
+  { id: "intro", label: "初识" },
+  { id: "roles", label: "行当" },
+  { id: "skills", label: "功法" },
+  { id: "stage", label: "舞台" },
+  { id: "compare", label: "比较" },
+] as const;
 
 export const JingjuPage = () => {
   const { addHistory, favorites, toggleFavorite } = useUserPreferences();
   const [panorama, setPanorama] = useState(false);
+  const [searchParams] = useSearchParams();
+  const activeTopic = searchParams.get("section");
   const liked = favorites.includes("jingju");
   useEffect(() => addHistory("jingju"), [addHistory]);
+  useEffect(() => {
+    const topic = topics.find(({ id }) => id === activeTopic);
+    if (!topic) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      document.getElementById(topic.id)?.scrollIntoView({
+        behavior: reducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeTopic]);
+
   return (
     <>
       <section className="detail-cover jingju-cover">
@@ -49,11 +76,15 @@ export const JingjuPage = () => {
         </div>
       </section>
       <nav className="topic-nav" aria-label="京剧展厅目录">
-        <a href="#intro">初识</a>
-        <a href="#roles">行当</a>
-        <a href="#skills">功法</a>
-        <a href="#stage">舞台</a>
-        <a href="#compare">比较</a>
+        {topics.map((topic) => (
+          <Link
+            key={topic.id}
+            to={`?section=${topic.id}`}
+            aria-current={activeTopic === topic.id ? "location" : undefined}
+          >
+            {topic.label}
+          </Link>
+        ))}
       </nav>
       <div className="screen-content jingju-topic">
         <section id="intro">
