@@ -4,8 +4,9 @@ import type { UnescoElement } from "../content/schema";
 import { IdentityBadge } from "./IdentityBadge";
 
 export const UnescoElementCard = ({ element }: { element: UnescoElement }) => {
-  const target =
-    element.id === "jingju" ? "/exhibitions/jingju" : `/discover/${element.id}`;
+  const target = ["jingju", "traditional-tea"].includes(element.id)
+    ? `/exhibitions/${element.id}`
+    : `/discover/${element.id}`;
   return (
     <Link className="element-card" to={target}>
       <div>

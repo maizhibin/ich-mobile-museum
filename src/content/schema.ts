@@ -96,3 +96,92 @@ export const audioGuideSchema = z
     });
   });
 export type AudioGuide = z.infer<typeof audioGuideSchema>;
+
+const sourceSchema = z.object({
+  title: z.string().min(1),
+  url: z.url(),
+});
+const processStepSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  order: z.number().int().positive(),
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  detail: z.string().min(1),
+  keywords: z.array(z.string().min(1)).min(1),
+});
+const processFlowSchema = z
+  .object({
+    id: z.string().regex(/^[a-z0-9-]+$/),
+    title: z.string().min(1),
+    accessibilityLabel: z.string().min(1),
+    steps: z.array(processStepSchema).min(2),
+  })
+  .superRefine((flow, context) => {
+    const ids = new Set<string>();
+    flow.steps.forEach((step, index) => {
+      if (ids.has(step.id)) {
+        context.addIssue({
+          code: "custom",
+          path: ["steps", index, "id"],
+          message: "工序 ID 不可重复",
+        });
+      }
+      ids.add(step.id);
+      if (step.order !== index + 1) {
+        context.addIssue({
+          code: "custom",
+          path: ["steps", index, "order"],
+          message: "工序顺序必须从 1 连续递增",
+        });
+      }
+    });
+  });
+
+export const teaExhibitionSchema = z
+  .object({
+    id: z.literal("traditional-tea"),
+    name: z.string().min(1),
+    year: z.literal(2022),
+    listType: z.literal("REPRESENTATIVE"),
+    updatedAt: z.iso.date(),
+    summary: z.string().min(1),
+    description: z.string().min(1),
+    cover: z.string().min(1),
+    rights: z.string().min(1),
+    sources: z.array(sourceSchema).min(1),
+    process: processFlowSchema,
+    regionalPractices: z
+      .array(
+        z.object({
+          id: z.string().regex(/^[a-z0-9-]+$/),
+          name: z.string().min(1),
+          teaCategory: z.string().min(1),
+          place: z.string().min(1),
+          processFocus: z.array(z.string().regex(/^[a-z0-9-]+$/)).min(1),
+          summary: z.string().min(1),
+          disclosure: z.string().min(1),
+        }),
+      )
+      .length(5),
+  })
+  .superRefine((exhibition, context) => {
+    const stepIds = new Set(exhibition.process.steps.map(({ id }) => id));
+    exhibition.regionalPractices.forEach((practice, practiceIndex) => {
+      practice.processFocus.forEach((stepId, focusIndex) => {
+        if (!stepIds.has(stepId)) {
+          context.addIssue({
+            code: "custom",
+            path: [
+              "regionalPractices",
+              practiceIndex,
+              "processFocus",
+              focusIndex,
+            ],
+            message: "地方实践必须引用已有工序 ID",
+          });
+        }
+      });
+    });
+  });
+export type ProcessFlowData = z.infer<typeof processFlowSchema>;
+export type TeaExhibition = z.infer<typeof teaExhibitionSchema>;

@@ -1,0 +1,115 @@
+{
+  "id": "traditional-tea",
+  "name": "中国传统制茶技艺及其相关习俗",
+  "year": 2022,
+  "listType": "REPRESENTATIVE",
+  "updatedAt": "2026-07-13",
+  "summary": "从一片鲜叶到一盏清香，认识制茶、饮茶与分享的生活实践。",
+  "description": "这一项目涵盖茶园管理、采茶、手工制茶、饮茶与分享等知识、技艺和实践。不同自然条件与地方习俗塑造了丰富多样的茶类与生活方式。",
+  "cover": "assets/museum-hero.png",
+  "rights": "封面为概念插画，用于产品原型展示，不作为历史档案或产地实拍资料。",
+  "sources": [
+    {
+      "title": "UNESCO：Traditional tea processing techniques and associated social practices in China",
+      "url": "https://ich.unesco.org/en/RL/traditional-tea-processing-techniques-and-associated-social-practices-in-china-01884"
+    },
+    {
+      "title": "中国非物质文化遗产网：中国非遗名录",
+      "url": "https://www.ihchina.cn/chinadirectory.html"
+    }
+  ],
+  "process": {
+    "id": "tea-from-leaf-to-cup",
+    "title": "一片叶子的旅程",
+    "accessibilityLabel": "传统制茶与饮茶流程",
+    "steps": [
+      {
+        "id": "picking",
+        "order": 1,
+        "title": "采茶",
+        "summary": "在适宜时节观察芽叶状态，完成采摘与初步拣选。",
+        "detail": "鲜叶是后续工序的起点。不同地方会依据品种、季节与制作目标选择采摘标准，手法与节奏也属于经验的一部分。",
+        "keywords": ["芽叶", "时令", "拣选"]
+      },
+      {
+        "id": "processing",
+        "order": 2,
+        "title": "制茶",
+        "summary": "通过萎凋、杀青、做青、揉捻、干燥等不同组合塑造风味与形态。",
+        "detail": "手工制茶不是统一配方。制作者会观察叶片状态、气候与器具，在不同茶类的工序组合中作出判断；具体流程因地方实践而异。",
+        "keywords": ["手工", "观察", "工序"]
+      },
+      {
+        "id": "brewing",
+        "order": 3,
+        "title": "泡茶",
+        "summary": "以水、器和时间让茶叶在杯盏中舒展。",
+        "detail": "饮茶时的投茶、注水、出汤与分饮，既关乎日常习惯，也体现对来客、场合和茶叶状态的照应。这里呈现的是文化观察，不提供健康或专业冲泡建议。",
+        "keywords": ["水", "器", "分享"]
+      },
+      {
+        "id": "etiquette",
+        "order": 4,
+        "title": "茶礼",
+        "summary": "在待客、团聚、婚礼等场合，以茶建立关系与表达敬意。",
+        "detail": "饮茶与分享贯穿家庭、工作场所、茶馆、餐馆与寺庙等生活空间。不同社区的礼俗各有语境，共同指向人与人之间的连接。",
+        "keywords": ["待客", "社区", "礼俗"]
+      },
+      {
+        "id": "tea-ware",
+        "order": 5,
+        "title": "茶器",
+        "summary": "器物承载泡饮动作，也留下材料、工艺与审美的线索。",
+        "detail": "壶、盖碗、杯、茶盘等器物与使用方式相互配合。v0.5 以图文观察器物角色，后续在取得授权素材后再补充 360° 器物浏览。",
+        "keywords": ["器物", "材料", "使用"]
+      }
+    ]
+  },
+  "regionalPractices": [
+    {
+      "id": "longjing",
+      "name": "西湖龙井",
+      "teaCategory": "绿茶",
+      "place": "浙江杭州",
+      "processFocus": ["picking", "processing"],
+      "summary": "以鲜叶采摘与手工杀青的观察入口，理解绿茶制作中的即时判断。",
+      "disclosure": "地方实践示例，非独立 UNESCO 项目。"
+    },
+    {
+      "id": "wuyi-rock-tea",
+      "name": "武夷岩茶",
+      "teaCategory": "乌龙茶",
+      "place": "福建武夷山",
+      "processFocus": ["processing", "brewing"],
+      "summary": "以摇青、静置等做青观察入口，理解乌龙茶制作的工序节奏。",
+      "disclosure": "地方实践示例，非独立 UNESCO 项目。"
+    },
+    {
+      "id": "puer-tea",
+      "name": "普洱茶",
+      "teaCategory": "黑茶",
+      "place": "云南多地",
+      "processFocus": ["processing", "etiquette"],
+      "summary": "从制作与分享的场景进入，观察茶如何连接地方生活与交往。",
+      "disclosure": "地方实践示例，非独立 UNESCO 项目。"
+    },
+    {
+      "id": "tieguanyin",
+      "name": "铁观音",
+      "teaCategory": "乌龙茶",
+      "place": "福建安溪",
+      "processFocus": ["processing", "tea-ware"],
+      "summary": "通过竹筛摇青、摊晾等工序线索，观察制作者与叶片状态的互动。",
+      "disclosure": "地方实践示例，非独立 UNESCO 项目。"
+    },
+    {
+      "id": "white-tea",
+      "name": "白茶",
+      "teaCategory": "白茶",
+      "place": "福建福鼎等地",
+      "processFocus": ["picking", "processing"],
+      "summary": "从萎凋等工序线索，观察鲜叶在不同制作方式中的变化。",
+      "disclosure": "地方实践示例，非独立 UNESCO 项目。"
+    }
+  ]
+}

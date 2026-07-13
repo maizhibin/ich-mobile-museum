@@ -9,6 +9,7 @@ import { MinePage } from "../routes/MinePage";
 import { MuseumPage } from "../routes/MuseumPage";
 import { MuseumsPage } from "../routes/MuseumsPage";
 import { PlaceholderPage } from "../routes/PlaceholderPage";
+import { TeaPage } from "../routes/TeaPage";
 import { UserPreferencesProvider, useUserPreferences } from "./UserPreferences";
 
 const AppSurface = () => {
@@ -19,6 +20,7 @@ const AppSurface = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/exhibitions/jingju" element={<JingjuPage />} />
+          <Route path="/exhibitions/traditional-tea" element={<TeaPage />} />
           <Route path="/exhibitions/:id" element={<ExhibitionPage />} />
           <Route path="/museums" element={<MuseumsPage />} />
           <Route path="/museums/:id" element={<MuseumPage />} />

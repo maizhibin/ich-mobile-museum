@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { AppHeader } from "../components/AppHeader";
 import { IdentityBadge } from "../components/IdentityBadge";
 import { museums, unescoElements, unescoSourceUrl } from "../content/unesco";
@@ -13,6 +13,9 @@ export const ElementPage = () => {
         <h1>未找到项目</h1>
       </div>
     );
+  if (element.id === "traditional-tea") {
+    return <Navigate to="/exhibitions/traditional-tea" replace />;
+  }
   return (
     <>
       <AppHeader back />

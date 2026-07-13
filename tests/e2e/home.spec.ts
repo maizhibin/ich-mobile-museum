@@ -125,3 +125,21 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
   ).toBeVisible();
   await page.getByRole("button", { name: "关闭全景" }).click();
 });
+
+test("茶文化馆提供可分享的工序流程与地方实践比较", async ({ page }) => {
+  await page.goto("/ich-mobile-museum/#/museums/tea");
+  await page
+    .getByRole("link", { name: /中国传统制茶技艺及其相关习俗/ })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "中国传统制茶技艺及其相关习俗" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "制茶" }).click();
+  await expect(page).toHaveURL(
+    /#\/exhibitions\/traditional-tea\?section=process&step=processing$/,
+  );
+  await expect(page.getByText("第 2 步 · 制茶")).toBeVisible();
+  await page.getByRole("tab", { name: "铁观音" }).click();
+  await expect(page.getByRole("tabpanel")).toContainText("铁观音");
+  await expect(page.getByRole("tabpanel")).toContainText("非独立 UNESCO 项目");
+});
