@@ -9,6 +9,11 @@ import { ProcessFlow } from "../features/process/ProcessFlow";
 import { TeaPracticeCompare } from "../features/tea/TeaPracticeCompare";
 import { TeaCultureExplorer } from "../features/tea/TeaCultureExplorer";
 import { TeaImageCarousel } from "../features/tea/TeaImageCarousel";
+import { getExhibitionFoundation } from "../content/foundations";
+import {
+  AtmosphereIntro,
+  ExhibitionTakeaway,
+} from "../features/exhibition/ExhibitionFoundation";
 
 const topics = [
   { id: "intro", label: "初识" },
@@ -19,6 +24,7 @@ const topics = [
 ] as const;
 
 export const TeaPage = () => {
+  const foundation = getExhibitionFoundation("traditional-tea");
   const { addHistory, favorites, toggleFavorite } = useUserPreferences();
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTopic = searchParams.get("section");
@@ -87,6 +93,7 @@ export const TeaPage = () => {
         ))}
       </nav>
       <div className="screen-content tea-topic">
+        {foundation && <AtmosphereIntro foundation={foundation} />}
         <section id="intro">
           <p className="eyebrow dark">从一片叶子开始</p>
           <h2>茶不只在杯中</h2>
@@ -135,6 +142,7 @@ export const TeaPage = () => {
             ))}
           </ul>
         </section>
+        {foundation && <ExhibitionTakeaway foundation={foundation} />}
       </div>
     </>
   );

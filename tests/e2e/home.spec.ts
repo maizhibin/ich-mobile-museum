@@ -9,6 +9,7 @@ test("可以从首页进入京剧展厅", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "京剧", exact: true }),
   ).toBeVisible();
+  await page.getByRole("button", { name: "进入展厅" }).click();
 });
 
 test("可以浏览专题馆并搜索 45 项清单", async ({ page }) => {
@@ -134,6 +135,7 @@ test("茶文化馆提供可分享的工序流程与地方实践比较", async ({
   await expect(
     page.getByRole("heading", { name: "中国传统制茶技艺及其相关习俗" }),
   ).toBeVisible();
+  await page.getByRole("button", { name: "进入展厅" }).click();
   await page.getByRole("button", { name: "制茶" }).click();
   await expect(page).toHaveURL(
     /#\/exhibitions\/traditional-tea\?section=process&step=processing$/,

@@ -1,0 +1,139 @@
+[
+  {
+    "exhibitionId": "jingju",
+    "updatedAt": "2026-07-13",
+    "atmosphere": {
+      "title": "锣鼓一响，好戏开场",
+      "description": "15 秒概念氛围声，以节拍与持续音提示走入京剧舞台的节奏。",
+      "durationSeconds": 15,
+      "disclosure": "浏览器本地合成的概念氛围声，不是戏曲唱段、现场录音或传承人声音。"
+    },
+    "sources": [
+      {
+        "id": "unesco",
+        "title": "UNESCO：Peking opera",
+        "url": "https://ich.unesco.org/en/RL/peking-opera-00418"
+      },
+      {
+        "id": "ihchina",
+        "title": "中国非物质文化遗产网：京剧",
+        "url": "https://www.ihchina.cn/project_details/13206"
+      }
+    ],
+    "factSources": [
+      { "id": "identity", "label": "名录身份与年份", "sourceId": "unesco" },
+      { "id": "history", "label": "形成与表演体系摘要", "sourceId": "ihchina" }
+    ],
+    "assets": [
+      {
+        "id": "backstage-cover",
+        "title": "京剧后台概念主视觉",
+        "type": "image",
+        "sourceId": "ihchina",
+        "rights": "项目原型分发图；正式替换前须完成图像权利核验。"
+      },
+      {
+        "id": "backstage-panorama",
+        "title": "京剧后台 AI 概念全景",
+        "type": "panorama",
+        "sourceId": "unesco",
+        "rights": "AI 概念全景，仅用于交互演示。",
+        "disclosure": "AI 概念图，不是历史影像或后台实拍。"
+      },
+      {
+        "id": "three-minute-guide",
+        "title": "三分钟认识京剧",
+        "type": "audio",
+        "sourceId": "unesco",
+        "rights": "原创公众教育文稿生成的中文合成语音，仅用于本项目演示。",
+        "disclosure": "系统合成语音，不是真人馆员、艺术家或传承人录音。"
+      }
+    ],
+    "communityNodes": [],
+    "safeguard": {
+      "title": "让舞台继续被看见",
+      "summary": "京剧依靠演员、乐队、院团、学校与观众共同延续。数字展厅将把“认识程式”连接到可查的演出、教育与社区实践。",
+      "actions": [
+        "阅读完整导览，理解唱、念、做、打的协作关系",
+        "后续内容上线时查看有来源的院团与学习社区节点"
+      ],
+      "sourceId": "unesco"
+    },
+    "takeaway": {
+      "learningCard": "京剧以唱、念、做、打和写意舞台，让观众与演员共同完成想象。",
+      "nextExhibitionId": "traditional-tea",
+      "nextLabel": "下一站：从一片叶子认识茶"
+    }
+  },
+  {
+    "exhibitionId": "traditional-tea",
+    "updatedAt": "2026-07-13",
+    "atmosphere": {
+      "title": "雾起茶山，叶在手中",
+      "description": "15 秒概念氛围声，以柔和持续音与轻节拍提示山场、鲜叶与茶席。",
+      "durationSeconds": 15,
+      "disclosure": "浏览器本地合成的概念氛围声，不是茶园、茶馆或传承人的现场录音。"
+    },
+    "sources": [
+      {
+        "id": "unesco",
+        "title": "UNESCO：Traditional tea processing techniques and associated social practices in China",
+        "url": "https://ich.unesco.org/en/RL/traditional-tea-processing-techniques-and-associated-social-practices-in-china-01884"
+      },
+      {
+        "id": "ihchina",
+        "title": "中国非物质文化遗产网：中国非遗名录",
+        "url": "https://www.ihchina.cn/chinadirectory.html"
+      }
+    ],
+    "factSources": [
+      {
+        "id": "identity",
+        "label": "名录身份、年份与项目范围",
+        "sourceId": "unesco"
+      },
+      { "id": "listing", "label": "中国名录对照", "sourceId": "ihchina" }
+    ],
+    "assets": [
+      {
+        "id": "tea-mountain",
+        "title": "茶山概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "AI 概念图，不是产地实拍或历史档案。"
+      },
+      {
+        "id": "tea-processing",
+        "title": "手工制茶概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "AI 概念图，不是工艺纪录影像。"
+      },
+      {
+        "id": "tea-wares",
+        "title": "茶席与器物概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "AI 概念图，不是馆藏或现场实拍。"
+      }
+    ],
+    "communityNodes": [],
+    "safeguard": {
+      "title": "让经验留在山场与日常",
+      "summary": "传统制茶技艺与相关习俗依赖茶农、制茶者、茶馆与家庭中的长期实践。后续将以可核验来源补充具体社区和传承视角。",
+      "actions": [
+        "在流程中识别“观察与判断”而非把技艺理解成固定配方",
+        "后续内容上线时查看有来源的社区、传承与生态保护节点"
+      ],
+      "sourceId": "unesco"
+    },
+    "takeaway": {
+      "learningCard": "一杯茶连接茶园管理、采摘、手工制茶、饮茶与分享，也连接不同地方的生活经验。",
+      "nextExhibitionId": "jingju",
+      "nextLabel": "下一站：走进京剧后台"
+    }
+  }
+]

@@ -242,3 +242,80 @@ export const teaExhibitionSchema = z
   });
 export type ProcessFlowData = z.infer<typeof processFlowSchema>;
 export type TeaExhibition = z.infer<typeof teaExhibitionSchema>;
+
+const foundationSourceSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  title: z.string().min(1),
+  url: z.url(),
+});
+export const exhibitionFoundationSchema = z
+  .object({
+    exhibitionId: z.enum(["jingju", "traditional-tea"]),
+    updatedAt: z.iso.date(),
+    atmosphere: z.object({
+      title: z.string().min(1),
+      description: z.string().min(1),
+      durationSeconds: z.literal(15),
+      disclosure: z.string().min(1),
+    }),
+    sources: z.array(foundationSourceSchema).min(1),
+    factSources: z
+      .array(
+        z.object({
+          id: z.string(),
+          label: z.string().min(1),
+          sourceId: z.string(),
+        }),
+      )
+      .min(1),
+    assets: z.array(
+      z.object({
+        id: z.string(),
+        title: z.string().min(1),
+        type: z.enum(["image", "audio", "panorama"]),
+        sourceId: z.string(),
+        rights: z.string().min(1),
+        disclosure: z.string().min(1).optional(),
+      }),
+    ),
+    communityNodes: z.array(
+      z.object({
+        id: z.string(),
+        title: z.string().min(1),
+        kind: z.enum(["person", "community", "institution"]),
+        sourceId: z.string(),
+      }),
+    ),
+    safeguard: z.object({
+      title: z.string().min(1),
+      summary: z.string().min(1),
+      actions: z.array(z.string().min(1)).min(1),
+      sourceId: z.string(),
+    }),
+    takeaway: z.object({
+      learningCard: z.string().min(1),
+      nextExhibitionId: z.enum(["jingju", "traditional-tea"]),
+      nextLabel: z.string().min(1),
+    }),
+  })
+  .superRefine((foundation, context) => {
+    const sourceIds = new Set(foundation.sources.map(({ id }) => id));
+    const validateSource = (sourceId: string, path: Array<string | number>) => {
+      if (!sourceIds.has(sourceId))
+        context.addIssue({ code: "custom", path, message: "必须引用已有来源" });
+    };
+    foundation.factSources.forEach((item, index) =>
+      validateSource(item.sourceId, ["factSources", index, "sourceId"]),
+    );
+    foundation.assets.forEach((item, index) =>
+      validateSource(item.sourceId, ["assets", index, "sourceId"]),
+    );
+    foundation.communityNodes.forEach((item, index) =>
+      validateSource(item.sourceId, ["communityNodes", index, "sourceId"]),
+    );
+    validateSource(foundation.safeguard.sourceId, ["safeguard", "sourceId"]);
+  });
+export const exhibitionFoundationsSchema = z
+  .array(exhibitionFoundationSchema)
+  .length(2);
+export type ExhibitionFoundation = z.infer<typeof exhibitionFoundationSchema>;

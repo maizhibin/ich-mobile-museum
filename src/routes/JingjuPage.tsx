@@ -7,6 +7,11 @@ import { IdentityBadge } from "../components/IdentityBadge";
 import { OperaCompare } from "../features/compare/OperaCompare";
 import { PanoramaViewer } from "../features/panorama/PanoramaViewer";
 import { AudioGuidePlayer } from "../features/player/AudioGuidePlayer";
+import { getExhibitionFoundation } from "../content/foundations";
+import {
+  AtmosphereIntro,
+  ExhibitionTakeaway,
+} from "../features/exhibition/ExhibitionFoundation";
 
 const roles = [
   { name: "生", description: "男性角色，包括老生、小生、武生等。" },
@@ -29,6 +34,7 @@ const topics = [
 ] as const;
 
 export const JingjuPage = () => {
+  const foundation = getExhibitionFoundation("jingju");
   const { addHistory, favorites, toggleFavorite } = useUserPreferences();
   const [panorama, setPanorama] = useState(false);
   const [searchParams] = useSearchParams();
@@ -87,6 +93,7 @@ export const JingjuPage = () => {
         ))}
       </nav>
       <div className="screen-content jingju-topic">
+        {foundation && <AtmosphereIntro foundation={foundation} />}
         <section id="intro">
           <p className="eyebrow dark">三分钟认识</p>
           <h2>它不只是一种唱腔</h2>
@@ -162,6 +169,7 @@ export const JingjuPage = () => {
         <section id="compare">
           <OperaCompare />
         </section>
+        {foundation && <ExhibitionTakeaway foundation={foundation} />}
         <section className="source-panel">
           <strong>来源与说明</strong>
           <p>
