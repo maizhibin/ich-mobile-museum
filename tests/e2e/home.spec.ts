@@ -24,7 +24,7 @@ test("可以浏览专题馆并搜索 45 项清单", async ({ page }) => {
   await expect(page.getByText("找到 1 项")).toBeVisible();
 });
 
-test("京剧旗舰展厅支持播放器、比较台和全景降级", async ({ page }) => {
+test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async ({ page }) => {
   await page.goto("/ich-mobile-museum/#/exhibitions/jingju");
   await expect(
     page.getByRole("heading", { name: "京剧", exact: true }),
@@ -36,6 +36,8 @@ test("京剧旗舰展厅支持播放器、比较台和全景降级", async ({ pa
   await expect(
     page.getByRole("dialog", { name: "京剧后台全景" }),
   ).toBeVisible();
+  await expect(page.locator(".psv-navbar")).toBeVisible();
+  await expect(page.getByText(/AI 概念全景/).first()).toBeVisible();
   await page.getByRole("button", { name: /切换图文模式/ }).click();
   await expect(
     page
