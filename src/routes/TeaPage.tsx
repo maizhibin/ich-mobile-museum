@@ -5,6 +5,8 @@ import { useUserPreferences } from "../app/UserPreferences";
 import { AppHeader } from "../components/AppHeader";
 import { IdentityBadge } from "../components/IdentityBadge";
 import { teaExhibition } from "../content/tea";
+import { teaAudioGuide } from "../content/audioGuides";
+import { AudioGuidePlayer } from "../features/player/AudioGuidePlayer";
 import { ProcessFlow } from "../features/process/ProcessFlow";
 import { TeaPracticeCompare } from "../features/tea/TeaPracticeCompare";
 import { TeaCultureExplorer } from "../features/tea/TeaCultureExplorer";
@@ -113,6 +115,7 @@ export const TeaPage = () => {
             </div>
           </div>
           <TeaImageCarousel gallery={teaExhibition.gallery} />
+          <AudioGuidePlayer guide={teaAudioGuide} />
         </section>
         <section id="process" className="topic-section">
           <ProcessFlow

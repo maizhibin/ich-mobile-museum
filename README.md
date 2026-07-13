@@ -6,7 +6,7 @@
 
 ## 当前版本
 
-当前版本为 **v0.5.1**。
+当前版本为 **v0.5.3**。
 
 - v0.2：完成 Vite、React、TypeScript 工程化和 GitHub Pages 部署配置。
 - v0.3：上线 9 个专题馆、45 项 UNESCO 中国项目、名录身份筛选和搜索。
@@ -19,6 +19,8 @@
 - v0.4.6：修复 GitHub Pages 发布源，改由 Actions 部署构建产物；同步升级工作流 Action 以适配 Node.js 24 运行时。
 - v0.5.0：上线茶文化馆旗舰展厅、可复用工序流程、五个地方实践比较入口，以及制茶实验台、茶席任务、器物观察和 AI 概念插画图片流；内容由 Schema 校验并提供来源、更新与权利说明。
 - v0.5.1：建立精品展厅共用底座：可跳过的概念氛围入口、资产/来源台账、保护进行时、学习卡分享与下一展厅路径。
+- v0.5.2：京剧补齐形成与传承时间轴、两类有来源社区视角及 8 件可审计数字资产。
+- v0.5.3：茶文化馆补齐三分钟合成语音导览、同步文字稿、两类有来源实践者/机构视角及 8 件可审计数字资产。
 
 ### UNESCO 数据口径
 
@@ -215,6 +217,7 @@ Pull Request 只执行验证，不覆盖正式站点。
 
 详细规划见：
 
+- [设计规范](docs/DESIGN.md)
 - [纯前端迭代路线](docs/frontend-iteration-roadmap.md)
 - [UNESCO 中国非遗精品馆群 MVP 方案](docs/unesco-china-boutique-museums-mvp.md)
 - [全国国家级非遗数据库与数字博物馆方案](docs/national-ich-digital-museum-design.md)

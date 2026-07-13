@@ -25,6 +25,11 @@ const skills = [
   { name: "做", description: "以手、眼、身、法、步表现行动与内心。" },
   { name: "打", description: "把武术动作提炼为有节奏的舞台表演。" },
 ];
+const timeline = [
+  ["1790", "徽班陆续进京，带来新的声腔与表演经验。"],
+  ["清代中后期", "与汉调、昆曲和北京地方声腔长期交流，表演体系逐渐成熟。"],
+  ["2010", "京剧列入 UNESCO 人类非物质文化遗产代表作名录。"],
+] as const;
 const topics = [
   { id: "intro", label: "初识" },
   { id: "roles", label: "行当" },
@@ -115,6 +120,21 @@ export const JingjuPage = () => {
             </div>
           </div>
           <AudioGuidePlayer />
+        </section>
+        <section
+          className="topic-section jingju-timeline"
+          aria-labelledby="jingju-timeline-title"
+        >
+          <p className="eyebrow dark">一眼看懂</p>
+          <h2 id="jingju-timeline-title">一门舞台艺术如何形成</h2>
+          <ol>
+            {timeline.map(([year, text]) => (
+              <li key={year}>
+                <strong>{year}</strong>
+                <span>{text}</span>
+              </li>
+            ))}
+          </ol>
         </section>
         <section id="roles" className="topic-section">
           <p className="eyebrow dark">认识角色</p>

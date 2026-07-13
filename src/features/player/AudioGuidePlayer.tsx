@@ -1,33 +1,34 @@
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { jingjuAudioGuide } from "../../content/audioGuides";
+import type { AudioGuide } from "../../content/schema";
 
 const playbackRates = [1, 1.25, 0.75] as const;
 
 const formatTime = (value: number) =>
   `${Math.floor(value / 60)}:${String(Math.floor(value % 60)).padStart(2, "0")}`;
 
-export const AudioGuidePlayer = () => {
+export const AudioGuidePlayer = ({
+  guide = jingjuAudioGuide,
+}: {
+  guide?: AudioGuide;
+}) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const transcriptRef = useRef<HTMLDivElement>(null);
   const activeCueRef = useRef<HTMLSpanElement>(null);
   const [playing, setPlaying] = useState(false);
   const [position, setPosition] = useState(0);
-  const [duration, setDuration] = useState(
-    jingjuAudioGuide.audio.durationSeconds,
-  );
+  const [duration, setDuration] = useState(guide.audio.durationSeconds);
   const [speed, setSpeed] = useState<(typeof playbackRates)[number]>(1);
   const [buffering, setBuffering] = useState(true);
   const [audioError, setAudioError] = useState<string | null>(null);
 
   const chapter =
-    [...jingjuAudioGuide.chapters]
-      .reverse()
-      .find(({ start }) => position >= start) ?? jingjuAudioGuide.chapters[0];
+    [...guide.chapters].reverse().find(({ start }) => position >= start) ??
+    guide.chapters[0];
   const cue =
-    [...jingjuAudioGuide.cues]
-      .reverse()
-      .find(({ start }) => position >= start) ?? jingjuAudioGuide.cues[0];
+    [...guide.cues].reverse().find(({ start }) => position >= start) ??
+    guide.cues[0];
 
   useEffect(() => {
     const container = transcriptRef.current;
@@ -75,7 +76,7 @@ export const AudioGuidePlayer = () => {
   };
 
   return (
-    <section className="guide-player" aria-label="京剧三分钟语音导览">
+    <section className="guide-player" aria-label={guide.title}>
       <audio
         ref={audioRef}
         preload="metadata"
@@ -104,8 +105,8 @@ export const AudioGuidePlayer = () => {
         }}
       >
         <source
-          src={`${import.meta.env.BASE_URL}${jingjuAudioGuide.audio.src}`}
-          type={jingjuAudioGuide.audio.mimeType}
+          src={`${import.meta.env.BASE_URL}${guide.audio.src}`}
+          type={guide.audio.mimeType}
         />
       </audio>
 
@@ -118,7 +119,7 @@ export const AudioGuidePlayer = () => {
           {playing ? <Pause /> : <Play />}
         </button>
         <div>
-          <p>{jingjuAudioGuide.title}</p>
+          <p>{guide.title}</p>
           <strong>{chapter.title}</strong>
           <span>
             {formatTime(position)} / {formatTime(duration)}
@@ -146,7 +147,7 @@ export const AudioGuidePlayer = () => {
       />
 
       <div className="chapter-row" aria-label="导览章节">
-        {jingjuAudioGuide.chapters.map((item) => (
+        {guide.chapters.map((item) => (
           <button
             key={item.id}
             className={chapter.id === item.id ? "active" : ""}
@@ -167,7 +168,7 @@ export const AudioGuidePlayer = () => {
           当前朗读：{cue.text}
         </p>
         <div className="transcript-body" ref={transcriptRef}>
-          {jingjuAudioGuide.chapters.map((item) => (
+          {guide.chapters.map((item) => (
             <section className="transcript-chapter" key={item.id}>
               <h3>
                 <button
@@ -178,7 +179,7 @@ export const AudioGuidePlayer = () => {
                 </button>
               </h3>
               <p className="transcript-paragraph">
-                {jingjuAudioGuide.cues
+                {guide.cues
                   .filter(({ chapterId }) => chapterId === item.id)
                   .map((itemCue) => {
                     const active = cue.start === itemCue.start;
@@ -226,16 +227,16 @@ export const AudioGuidePlayer = () => {
           <RotateCcw />
           从头开始
         </button>
-        <span>{jingjuAudioGuide.audio.disclosure}</span>
+        <span>{guide.audio.disclosure}</span>
       </div>
 
       <details className="guide-sources">
         <summary>文稿来源与说明</summary>
         <p className="guide-rights">
-          更新于 {jingjuAudioGuide.updatedAt}。{jingjuAudioGuide.audio.rights}
+          更新于 {guide.updatedAt}。{guide.audio.rights}
         </p>
         <ul>
-          {jingjuAudioGuide.sources.map((source) => (
+          {guide.sources.map((source) => (
             <li key={source.url}>
               <a href={source.url} target="_blank" rel="noreferrer">
                 {source.title}

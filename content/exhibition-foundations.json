@@ -16,8 +16,8 @@
       },
       {
         "id": "ihchina",
-        "title": "中国非物质文化遗产网：京剧",
-        "url": "https://www.ihchina.cn/project_details/13206"
+        "title": "中国非物质文化遗产网：近十年京剧艺术传承研究",
+        "url": "https://www.ihchina.cn/Article/Index/detail?id=26788"
       }
     ],
     "factSources": [
@@ -47,9 +47,62 @@
         "sourceId": "unesco",
         "rights": "原创公众教育文稿生成的中文合成语音，仅用于本项目演示。",
         "disclosure": "系统合成语音，不是真人馆员、艺术家或传承人录音。"
+      },
+      {
+        "id": "atmosphere",
+        "title": "京剧概念氛围声",
+        "type": "audio",
+        "sourceId": "unesco",
+        "rights": "浏览器本地合成，仅用于本项目体验。",
+        "disclosure": "不是现场录音或唱段。"
+      },
+      {
+        "id": "costume",
+        "title": "京剧服饰概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "不是文物或档案影像。"
+      },
+      {
+        "id": "makeup",
+        "title": "勾脸概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "不是传承人肖像。"
+      },
+      {
+        "id": "instruments",
+        "title": "文武场概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "不是现场演出影像。"
+      },
+      {
+        "id": "symbolic-stage",
+        "title": "一桌二椅概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "不是舞台实拍。"
       }
     ],
-    "communityNodes": [],
+    "communityNodes": [
+      {
+        "id": "opera-troupes",
+        "title": "院团与多工种协作",
+        "kind": "community",
+        "sourceId": "ihchina"
+      },
+      {
+        "id": "master-apprentice",
+        "title": "师徒训练与口传心授",
+        "kind": "community",
+        "sourceId": "unesco"
+      }
+    ],
     "safeguard": {
       "title": "让舞台继续被看见",
       "summary": "京剧依靠演员、乐队、院团、学校与观众共同延续。数字展厅将把“认识程式”连接到可查的演出、教育与社区实践。",
@@ -82,8 +135,8 @@
       },
       {
         "id": "ihchina",
-        "title": "中国非物质文化遗产网：中国非遗名录",
-        "url": "https://www.ihchina.cn/chinadirectory.html"
+        "title": "中国非物质文化遗产网：中国传统制茶技艺及其相关习俗的传承",
+        "url": "https://www.ihchina.cn/news_1_details/28505.html"
       }
     ],
     "factSources": [
@@ -118,9 +171,62 @@
         "sourceId": "unesco",
         "rights": "AI 概念插画，用于产品原型展示。",
         "disclosure": "AI 概念图，不是馆藏或现场实拍。"
+      },
+      {
+        "id": "atmosphere",
+        "title": "茶山概念氛围声",
+        "type": "audio",
+        "sourceId": "unesco",
+        "rights": "浏览器本地合成，仅用于本项目体验。",
+        "disclosure": "不是茶园或茶馆现场录音。"
+      },
+      {
+        "id": "picking",
+        "title": "采摘概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "不是产地实拍。"
+      },
+      {
+        "id": "drying",
+        "title": "鲜叶晾制概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "不是工艺纪录影像。"
+      },
+      {
+        "id": "vessels",
+        "title": "盖碗与壶概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "不是馆藏实拍。"
+      },
+      {
+        "id": "sharing",
+        "title": "分享茶席概念插画",
+        "type": "image",
+        "sourceId": "unesco",
+        "rights": "AI 概念插画，用于产品原型展示。",
+        "disclosure": "不是社区纪录影像。"
       }
     ],
-    "communityNodes": [],
+    "communityNodes": [
+      {
+        "id": "tea-makers",
+        "title": "制茶师、茶农与采茶工",
+        "kind": "community",
+        "sourceId": "ihchina"
+      },
+      {
+        "id": "safeguarding-group",
+        "title": "中国茶叶博物馆牵头的保护工作组",
+        "kind": "institution",
+        "sourceId": "ihchina"
+      }
+    ],
     "safeguard": {
       "title": "让经验留在山场与日常",
       "summary": "传统制茶技艺与相关习俗依赖茶农、制茶者、茶馆与家庭中的长期实践。后续将以可核验来源补充具体社区和传承视角。",

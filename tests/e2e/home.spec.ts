@@ -117,7 +117,11 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
   ).toBeVisible();
   await expect(page.locator(".psv-navbar")).toBeVisible();
   await expect(page.getByText("化妆台", { exact: true })).toBeVisible();
-  await expect(page.getByText(/AI 概念全景/).first()).toBeVisible();
+  await expect(
+    page
+      .getByRole("dialog", { name: "京剧后台全景" })
+      .getByText("360° 球面漫游 · AI 概念全景", { exact: true }),
+  ).toBeVisible();
   await page.getByRole("button", { name: /切换图文模式/ }).click();
   await expect(
     page
@@ -136,13 +140,15 @@ test("茶文化馆提供可分享的工序流程与地方实践比较", async ({
     page.getByRole("heading", { name: "中国传统制茶技艺及其相关习俗" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "进入展厅" }).click();
-  await page.getByRole("button", { name: "制茶" }).click();
+  await page.getByRole("button", { name: "制茶", exact: true }).click();
   await expect(page).toHaveURL(
     /#\/exhibitions\/traditional-tea\?section=process&step=processing$/,
   );
   await expect(page.getByText("第 2 步 · 制茶")).toBeVisible();
   await page.getByRole("button", { name: "下一张图片" }).click();
-  await expect(page.getByText("手上有判断")).toBeVisible();
+  await expect(
+    page.getByLabel("从一片叶到一席茶").getByText("手上有判断"),
+  ).toBeVisible();
   await page.getByRole("tab", { name: "铁观音" }).click();
   await expect(page.getByRole("tabpanel")).toContainText("铁观音");
   await expect(page.getByRole("tabpanel")).toContainText("非独立 UNESCO 项目");

@@ -1690,6 +1690,33 @@ a:focus-visible {
   color: var(--red);
   text-decoration: underline;
 }
+.jingju-timeline ol {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 20px 0 0;
+  list-style: none;
+}
+.jingju-timeline li {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 14px;
+  padding: 16px;
+  border-left: 3px solid var(--red);
+  border-radius: 0 14px 14px 0;
+  background: white;
+}
+.jingju-timeline strong {
+  color: var(--red);
+  font:
+    700 18px "Noto Serif SC",
+    serif;
+}
+.jingju-timeline span {
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 13px;
+}
 .panorama-dialog {
   position: fixed;
   z-index: 30;

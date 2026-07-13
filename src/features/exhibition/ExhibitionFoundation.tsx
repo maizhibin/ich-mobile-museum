@@ -156,6 +156,24 @@ export const ExhibitionTakeaway = ({
             </li>
           ))}
         </ul>
+        <p>社区与传承视角</p>
+        <ul>
+          {foundation.communityNodes.map((node) => (
+            <li key={node.id}>
+              {node.title}：
+              <a
+                href={
+                  foundation.sources.find((item) => item.id === node.sourceId)
+                    ?.url
+                }
+                target="_blank"
+                rel="noreferrer"
+              >
+                查看来源
+              </a>
+            </li>
+          ))}
+        </ul>
         <ul>
           {foundation.factSources.map((fact) => (
             <li key={fact.id}>
