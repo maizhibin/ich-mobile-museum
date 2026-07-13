@@ -86,6 +86,15 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
   await expect(page.locator(".transcript-cue.active")).toContainText(
     "生多扮演男性人物",
   );
+  await expect(page.locator(".transcript-paragraph")).toHaveCount(5);
+  await expect(page.locator(".transcript-cue.active")).toHaveCSS(
+    "background-color",
+    "rgba(0, 0, 0, 0)",
+  );
+  await expect(page.locator(".transcript-cue.active")).toHaveCSS(
+    "display",
+    "inline",
+  );
   await expect
     .poll(async () =>
       Number(await page.getByLabel("导览播放进度").inputValue()),

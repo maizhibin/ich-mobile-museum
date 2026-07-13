@@ -10,7 +10,7 @@ const formatTime = (value: number) =>
 export const AudioGuidePlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const transcriptRef = useRef<HTMLDivElement>(null);
-  const activeCueRef = useRef<HTMLButtonElement>(null);
+  const activeCueRef = useRef<HTMLSpanElement>(null);
   const [playing, setPlaying] = useState(false);
   const [position, setPosition] = useState(0);
   const [duration, setDuration] = useState(
@@ -177,23 +177,33 @@ export const AudioGuidePlayer = () => {
                   {item.title}
                 </button>
               </h3>
-              {jingjuAudioGuide.cues
-                .filter(({ chapterId }) => chapterId === item.id)
-                .map((itemCue) => {
-                  const active = cue.start === itemCue.start;
-                  return (
-                    <button
-                      ref={active ? activeCueRef : undefined}
-                      className={`transcript-cue ${active ? "active" : ""}`}
-                      key={itemCue.start}
-                      onClick={() => seekTo(itemCue.start)}
-                      aria-current={active ? "true" : undefined}
-                      aria-label={`跳转到 ${formatTime(itemCue.start)}：${itemCue.text}`}
-                    >
-                      {itemCue.text}
-                    </button>
-                  );
-                })}
+              <p className="transcript-paragraph">
+                {jingjuAudioGuide.cues
+                  .filter(({ chapterId }) => chapterId === item.id)
+                  .map((itemCue) => {
+                    const active = cue.start === itemCue.start;
+                    return (
+                      <span
+                        ref={active ? activeCueRef : undefined}
+                        className={`transcript-cue ${active ? "active" : ""}`}
+                        key={itemCue.start}
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => seekTo(itemCue.start)}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            seekTo(itemCue.start);
+                          }
+                        }}
+                        aria-current={active ? "true" : undefined}
+                        aria-label={`跳转到 ${formatTime(itemCue.start)}：${itemCue.text}`}
+                      >
+                        {itemCue.text}
+                      </span>
+                    );
+                  })}
+              </p>
             </section>
           ))}
         </div>
