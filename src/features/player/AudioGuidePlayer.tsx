@@ -1,5 +1,5 @@
 import { Pause, Play, RotateCcw } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { jingjuAudioGuide } from "../../content/audioGuides";
 
 const playbackRates = [1, 1.25, 0.75] as const;
@@ -9,6 +9,8 @@ const formatTime = (value: number) =>
 
 export const AudioGuidePlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const transcriptRef = useRef<HTMLDivElement>(null);
+  const activeCueRef = useRef<HTMLButtonElement>(null);
   const [playing, setPlaying] = useState(false);
   const [position, setPosition] = useState(0);
   const [duration, setDuration] = useState(
@@ -26,6 +28,22 @@ export const AudioGuidePlayer = () => {
     [...jingjuAudioGuide.cues]
       .reverse()
       .find(({ start }) => position >= start) ?? jingjuAudioGuide.cues[0];
+
+  useEffect(() => {
+    const container = transcriptRef.current;
+    const activeCue = activeCueRef.current;
+    if (!container || !activeCue) return;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const nextTop =
+      activeCue.offsetTop - container.offsetTop - container.clientHeight / 2;
+    container.scrollTo({
+      top: Math.max(0, nextTop),
+      behavior: reducedMotion ? "auto" : "smooth",
+    });
+  }, [cue.start]);
 
   const togglePlayback = async () => {
     const audio = audioRef.current;
@@ -140,10 +158,46 @@ export const AudioGuidePlayer = () => {
         ))}
       </div>
 
-      <details className="transcript" open>
-        <summary>同步文字稿</summary>
-        <p aria-live="polite">{cue.text}</p>
-      </details>
+      <section className="transcript" aria-label="同步文字稿">
+        <header className="transcript-head">
+          <strong>同步文字稿</strong>
+          <span>点击章节或句子可跳转</span>
+        </header>
+        <p className="sr-only" aria-live="polite">
+          当前朗读：{cue.text}
+        </p>
+        <div className="transcript-body" ref={transcriptRef}>
+          {jingjuAudioGuide.chapters.map((item) => (
+            <section className="transcript-chapter" key={item.id}>
+              <h3>
+                <button
+                  onClick={() => seekTo(item.start)}
+                  aria-current={chapter.id === item.id ? "true" : undefined}
+                >
+                  {item.title}
+                </button>
+              </h3>
+              {jingjuAudioGuide.cues
+                .filter(({ chapterId }) => chapterId === item.id)
+                .map((itemCue) => {
+                  const active = cue.start === itemCue.start;
+                  return (
+                    <button
+                      ref={active ? activeCueRef : undefined}
+                      className={`transcript-cue ${active ? "active" : ""}`}
+                      key={itemCue.start}
+                      onClick={() => seekTo(itemCue.start)}
+                      aria-current={active ? "true" : undefined}
+                      aria-label={`跳转到 ${formatTime(itemCue.start)}：${itemCue.text}`}
+                    >
+                      {itemCue.text}
+                    </button>
+                  );
+                })}
+            </section>
+          ))}
+        </div>
+      </section>
 
       {audioError && (
         <p className="audio-error" role="alert">
@@ -165,19 +219,8 @@ export const AudioGuidePlayer = () => {
         <span>{jingjuAudioGuide.audio.disclosure}</span>
       </div>
 
-      <details className="full-transcript">
-        <summary>查看完整文稿与来源</summary>
-        {jingjuAudioGuide.chapters.map((item) => (
-          <section key={item.id}>
-            <h3>{item.title}</h3>
-            <p>
-              {jingjuAudioGuide.cues
-                .filter(({ chapterId }) => chapterId === item.id)
-                .map(({ text }) => text)
-                .join("")}
-            </p>
-          </section>
-        ))}
+      <details className="guide-sources">
+        <summary>文稿来源与说明</summary>
         <p className="guide-rights">
           更新于 {jingjuAudioGuide.updatedAt}。{jingjuAudioGuide.audio.rights}
         </p>

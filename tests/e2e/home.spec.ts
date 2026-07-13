@@ -66,12 +66,37 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
       { timeout: 15_000 },
     )
     .toBeGreaterThan(0);
-  await page.getByRole("button", { name: "从徽班进京到京剧形成" }).click();
-  await expect(
-    page.getByText("京剧不是在某一天突然诞生的。", { exact: true }),
-  ).toBeVisible();
+  await page
+    .locator(".chapter-row")
+    .getByRole("button", { name: "从徽班进京到京剧形成" })
+    .click();
+  await expect(page.locator(".transcript-cue.active")).toHaveText(
+    "京剧不是在某一天突然诞生的。",
+  );
+  await page
+    .locator(".transcript-cue")
+    .filter({ hasText: "生多扮演男性人物" })
+    .click();
   await page.getByRole("button", { name: "暂停导览" }).click();
-  await page.getByText("查看完整文稿与来源").click();
+  await expect(
+    page
+      .locator(".chapter-row")
+      .getByRole("button", { name: "生旦净丑，不只是角色标签" }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator(".transcript-cue.active")).toContainText(
+    "生多扮演男性人物",
+  );
+  await expect
+    .poll(async () =>
+      Number(await page.getByLabel("导览播放进度").inputValue()),
+    )
+    .toBeGreaterThanOrEqual(72.6);
+  await expect
+    .poll(async () =>
+      Number(await page.getByLabel("导览播放进度").inputValue()),
+    )
+    .toBeLessThan(73.5);
+  await page.getByText("文稿来源与说明").click();
   await expect(
     page.getByRole("link", { name: "UNESCO：Peking opera" }),
   ).toBeVisible();
@@ -81,6 +106,7 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
     page.getByRole("dialog", { name: "京剧后台全景" }),
   ).toBeVisible();
   await expect(page.locator(".psv-navbar")).toBeVisible();
+  await expect(page.getByText("化妆台", { exact: true })).toBeVisible();
   await expect(page.getByText(/AI 概念全景/).first()).toBeVisible();
   await page.getByRole("button", { name: /切换图文模式/ }).click();
   await expect(

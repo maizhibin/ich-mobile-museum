@@ -18,7 +18,7 @@ const markers = [
   },
   {
     id: "makeup",
-    position: { yaw: "-5deg", pitch: "-8deg" },
+    position: { yaw: "-180deg", pitch: "-8deg" },
     html: '<span class="vr-hotspot">化妆台</span>',
     anchor: "center bottom",
     tooltip: "化妆台：勾脸、梳头与穿戴的准备空间",
@@ -59,9 +59,11 @@ export const SphereViewer = ({ onError }: SphereViewerProps) => {
           description:
             "使用鼠标、触控或方向键环视；点击标记查看戏服、化妆与文武场说明。",
           loadingTxt: "正在进入概念全景……",
-          defaultYaw: 0,
+          defaultYaw: "-180deg",
           defaultPitch: 0,
-          defaultZoomLvl: 36,
+          defaultZoomLvl: 35,
+          minFov: 30,
+          maxFov: 90,
           keyboard: "always",
           navbar: [
             "zoom",
