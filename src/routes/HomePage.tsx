@@ -1,8 +1,10 @@
-import { Accessibility, Headphones, MapPinned, Sparkles } from "lucide-react";
+import { Accessibility, Grid2X2, Headphones, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AppHeader } from "../components/AppHeader";
 import { ExhibitionCard } from "../components/ExhibitionCard";
+import { MuseumCard } from "../components/MuseumCard";
 import { exhibitions } from "../content/exhibitions";
+import { museums } from "../content/unesco";
 
 export const HomePage = () => (
   <>
@@ -45,11 +47,23 @@ export const HomePage = () => (
           <strong>长辈安心听</strong>
           <span>大字、清晰、慢一点</span>
         </Link>
-        <Link className="path-card" to="/map">
-          <MapPinned />
-          <strong>从地图出发</strong>
-          <span>找找家乡的手艺</span>
+        <Link className="path-card" to="/museums">
+          <Grid2X2 />
+          <strong>从专题馆出发</strong>
+          <span>按声音、手艺和节令探索</span>
         </Link>
+      </div>
+      <div className="section-head">
+        <div>
+          <h2>五个旗舰专题馆</h2>
+          <p>先按体验方式选择，再进入精品展厅</p>
+        </div>
+        <Link to="/museums">全部</Link>
+      </div>
+      <div className="museum-grid compact">
+        {museums.slice(0, 5).map((museum) => (
+          <MuseumCard key={museum.id} museum={museum} />
+        ))}
       </div>
       <div className="section-head">
         <div>

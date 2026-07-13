@@ -1,0 +1,65 @@
+[
+  {
+    "id": "opera",
+    "name": "戏曲与表演馆",
+    "symbol": "戏",
+    "tagline": "从一声锣鼓，走进百样舞台",
+    "description": "比较唱腔、妆容、角色、乐器与舞台空间。"
+  },
+  {
+    "id": "tea",
+    "name": "茶与生活馆",
+    "symbol": "茶",
+    "tagline": "一片叶子里的山河与人情",
+    "description": "沿着采茶、制茶、泡茶、茶礼和茶器慢慢逛。"
+  },
+  {
+    "id": "festival",
+    "name": "节庆与岁时馆",
+    "symbol": "岁",
+    "tagline": "跟着年历，遇见共同的日子",
+    "description": "从节日、节气和社区仪式理解时间。"
+  },
+  {
+    "id": "craft",
+    "name": "手工艺馆",
+    "symbol": "工",
+    "tagline": "放大一针一线、一刀一木",
+    "description": "观察材料、工具、纹理、工序与匠人。"
+  },
+  {
+    "id": "martial",
+    "name": "武术与身体馆",
+    "symbol": "武",
+    "tagline": "从动作里认识身体智慧",
+    "description": "慢放动作，理解重心、呼吸与传承。"
+  },
+  {
+    "id": "music",
+    "name": "音乐与声音馆",
+    "symbol": "音",
+    "tagline": "听见不同地方的声音景观",
+    "description": "分轨聆听歌声、器乐与社区合唱。"
+  },
+  {
+    "id": "oral",
+    "name": "史诗与口头传统馆",
+    "symbol": "言",
+    "tagline": "让古老故事继续被讲述",
+    "description": "跟随原声、人物谱和叙事地图展开长歌。"
+  },
+  {
+    "id": "belief",
+    "name": "信俗与社区馆",
+    "symbol": "礼",
+    "tagline": "在人与海、人与家园之间",
+    "description": "理解仪式空间、社区角色和共同记忆。"
+  },
+  {
+    "id": "knowledge",
+    "name": "文字、知识与技艺馆",
+    "symbol": "知",
+    "tagline": "书写、计算与生活里的知识",
+    "description": "动手理解文字、印刷、历法与传统知识。"
+  }
+]
