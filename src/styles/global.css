@@ -829,24 +829,28 @@ a:focus-visible {
 .transcript-chapter h3 button[aria-current="true"] {
   color: #f3bd7c;
 }
-.transcript-cue {
-  width: 100%;
-  min-height: 44px;
-  margin: 2px 0;
-  padding: 10px 12px;
-  border: 0;
-  border-left: 3px solid transparent;
-  border-radius: 8px;
+.transcript-paragraph {
+  margin: 0;
   color: #d8cbbc;
+  line-height: 1.9;
+}
+.transcript-cue {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
   background: transparent;
-  text-align: left;
-  line-height: 1.75;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
 }
 .transcript-cue.active {
-  border-left-color: #d5aa78;
-  color: #2b251f;
-  background: #f4e3ca;
-  font-weight: 600;
+  color: #f3bd7c;
+}
+.transcript-cue:focus-visible {
+  outline: 2px solid #7ab6ff;
+  outline-offset: 2px;
 }
 .audio-error {
   padding: 10px 12px;
