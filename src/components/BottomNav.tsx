@@ -1,10 +1,10 @@
-import { Grid2X2, House, MapPinned, Sparkles, UserRound } from "lucide-react";
+import { Compass, Grid2X2, House, Sparkles, UserRound } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const items = [
   { to: "/", label: "首页", icon: House },
-  { to: "/map", label: "地图", icon: MapPinned },
-  { to: "/museums", label: "分类", icon: Grid2X2 },
+  { to: "/museums", label: "专题馆", icon: Grid2X2 },
+  { to: "/discover", label: "发现", icon: Compass },
   { to: "/interactive", label: "互动", icon: Sparkles },
   { to: "/mine", label: "我的", icon: UserRound },
 ];

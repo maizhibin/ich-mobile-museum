@@ -1,8 +1,12 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { BottomNav } from "../components/BottomNav";
 import { ExhibitionPage } from "../routes/ExhibitionPage";
+import { DiscoverPage } from "../routes/DiscoverPage";
+import { ElementPage } from "../routes/ElementPage";
 import { HomePage } from "../routes/HomePage";
 import { MinePage } from "../routes/MinePage";
+import { MuseumPage } from "../routes/MuseumPage";
+import { MuseumsPage } from "../routes/MuseumsPage";
 import { PlaceholderPage } from "../routes/PlaceholderPage";
 import { UserPreferencesProvider, useUserPreferences } from "./UserPreferences";
 
@@ -14,24 +18,10 @@ const AppSurface = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/exhibitions/:id" element={<ExhibitionPage />} />
-          <Route
-            path="/map"
-            element={
-              <PlaceholderPage
-                title="非遗地图"
-                description="从地方实践进入一段正在发生的故事。"
-              />
-            }
-          />
-          <Route
-            path="/museums"
-            element={
-              <PlaceholderPage
-                title="专题馆"
-                description="从戏曲、茶、节庆、手工艺与武术进入非遗世界。"
-              />
-            }
-          />
+          <Route path="/museums" element={<MuseumsPage />} />
+          <Route path="/museums/:id" element={<MuseumPage />} />
+          <Route path="/discover" element={<DiscoverPage />} />
+          <Route path="/discover/:id" element={<ElementPage />} />
           <Route
             path="/interactive"
             element={

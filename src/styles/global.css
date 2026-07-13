@@ -455,6 +455,244 @@ a:focus-visible {
   border-radius: 14px;
   background: white;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.museum-grid {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+}
+.museum-card {
+  --museum: #713832;
+  min-height: 128px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border-radius: 20px;
+  color: white;
+  background: linear-gradient(135deg, var(--museum), #27221d);
+}
+.museum-card > svg {
+  width: 20px;
+}
+.museum-card small,
+.museum-card p {
+  color: #f0ded0;
+}
+.museum-card strong {
+  display: block;
+  margin-top: 5px;
+  font:
+    700 20px "Noto Serif SC",
+    serif;
+}
+.museum-card p {
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+.museum-symbol {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid #ffffff55;
+  border-radius: 50%;
+  font:
+    700 24px "Noto Serif SC",
+    serif;
+}
+.museum-tea {
+  --museum: #48634d;
+}
+.museum-festival {
+  --museum: #982f2b;
+}
+.museum-craft {
+  --museum: #755738;
+}
+.museum-martial {
+  --museum: #38475a;
+}
+.museum-music {
+  --museum: #55406b;
+}
+.museum-oral {
+  --museum: #73513e;
+}
+.museum-belief {
+  --museum: #49615f;
+}
+.museum-knowledge {
+  --museum: #4c516a;
+}
+.museum-grid.compact .museum-card:nth-child(n + 4) {
+  min-height: 108px;
+}
+.museum-hero {
+  min-height: 360px;
+  padding: 120px 24px 36px;
+  color: white;
+  background: linear-gradient(145deg, #8d2d2a, #27221d);
+}
+.museum-hero > span {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  border: 1px solid #ffffff66;
+  border-radius: 50%;
+  font:
+    700 32px "Noto Serif SC",
+    serif;
+}
+.museum-hero p {
+  margin: 30px 0 6px;
+  letter-spacing: 0.18em;
+  color: #ead9c4;
+}
+.museum-hero h1 {
+  margin: 0 0 10px;
+  font:
+    700 38px "Noto Serif SC",
+    serif;
+}
+.element-list {
+  display: grid;
+  gap: 10px;
+}
+.element-card {
+  min-height: 104px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid #e0d7ca;
+  border-radius: 16px;
+  background: white;
+}
+.element-card > div {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+}
+.element-card strong {
+  font-size: 17px;
+}
+.element-card span:last-child {
+  color: var(--muted);
+  font-size: 12px;
+}
+.identity-badge {
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #684a27;
+  background: #f1dfc3;
+  font-size: 11px;
+  font-weight: 700;
+}
+.identity-badge.urgent_safeguarding {
+  color: #8d2d2a;
+  background: #f5d4d1;
+}
+.identity-badge.good_practice {
+  color: #315a49;
+  background: #d9ebe2;
+}
+.source-link {
+  display: flex;
+  min-height: 48px;
+  margin-top: 24px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #cbbdad;
+  border-radius: 999px;
+  color: var(--red);
+}
+.source-link svg {
+  width: 17px;
+}
+.search-box {
+  height: 52px;
+  margin: 22px 0 14px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #cbbdad;
+  border-radius: 16px;
+  background: white;
+}
+.search-box svg {
+  width: 20px;
+  color: var(--muted);
+}
+.search-box input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 16px;
+}
+.filter-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 0 10px;
+}
+.filter-row button {
+  min-height: 40px;
+  padding: 0 13px;
+  flex: 0 0 auto;
+  border: 1px solid #cbbdad;
+  border-radius: 999px;
+  background: transparent;
+}
+.filter-row button.selected {
+  border-color: var(--red);
+  color: white;
+  background: var(--red);
+}
+.result-count {
+  color: var(--muted);
+}
+.element-title {
+  margin-top: 16px !important;
+}
+.museum-links {
+  margin: 28px 0;
+}
+.museum-links a {
+  display: flex;
+  margin: 8px 0;
+  padding: 14px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 14px;
+  background: white;
+}
+.museum-links a span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--red);
+}
 .elder-mode {
   --ink: #111;
   font-size: 118%;
