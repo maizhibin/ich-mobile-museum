@@ -345,33 +345,6 @@ a:focus-visible {
   margin-top: 7px;
   color: #ddd0c0;
 }
-.modal {
-  position: fixed;
-  z-index: 20;
-  inset: 0;
-  display: flex;
-  padding: 18px;
-  flex-direction: column;
-  background: #181512;
-  color: white;
-}
-.modal-close {
-  align-self: end;
-  min-width: 70px;
-  min-height: 44px;
-  border: 1px solid #ffffff55;
-  border-radius: 999px;
-  background: transparent;
-  color: white;
-}
-.panorama {
-  flex: 1;
-  margin-top: 16px;
-  border-radius: 18px;
-  background-size: cover;
-  background-position: center;
-  overflow: auto;
-}
 .bottom-nav {
   position: fixed;
   z-index: 10;
@@ -983,52 +956,41 @@ a:focus-visible {
   color: white;
   background: transparent;
 }
-.panorama-stage {
-  position: relative;
+.sphere-viewer {
+  min-height: 0;
   margin: 0 16px;
+  overflow: hidden;
   border-radius: 18px;
-  background-size: auto 100%;
-  background-repeat: repeat-x;
-  outline: none;
-  touch-action: none;
+  background: #090806;
 }
-.panorama-stage:focus-visible {
-  box-shadow: inset 0 0 0 4px #7ab6ff;
+.sphere-loading {
+  min-height: 0;
+  margin: 0 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: #ded1c2;
+  background: #090806;
 }
-.panorama-stage > span {
-  position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  white-space: nowrap;
-  background: #171411bb;
-  font-size: 12px;
+.sphere-viewer .psv-container {
+  font-family: inherit;
 }
-.hotspot {
-  position: absolute;
-  min-height: 40px;
-  padding: 0 12px;
+.sphere-viewer .psv-navbar {
+  background: #171411dd;
+}
+.vr-hotspot {
+  display: grid;
+  min-height: 44px;
+  padding: 0 14px;
+  place-items: center;
   border: 2px solid white;
   border-radius: 999px;
+  white-space: nowrap;
   color: white;
-  background: #8d2d2acc;
-}
-.hotspot.costume {
-  left: 18%;
-  top: 34%;
-}
-.hotspot.makeup {
-  left: 48%;
-  top: 56%;
-}
-.hotspot.music {
-  right: 13%;
-  top: 28%;
+  background: #8d2d2ae8;
+  box-shadow: 0 4px 18px #0008;
+  font-size: 13px;
+  font-weight: 700;
 }
 .panorama-dialog footer {
   padding: 14px 18px calc(14px + env(safe-area-inset-bottom));

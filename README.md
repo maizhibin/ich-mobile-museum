@@ -6,11 +6,12 @@
 
 ## 当前版本
 
-当前版本为 **v0.4.0**。
+当前版本为 **v0.4.1**。
 
 - v0.2：完成 Vite、React、TypeScript 工程化和 GitHub Pages 部署配置。
 - v0.3：上线 9 个专题馆、45 项 UNESCO 中国项目、名录身份筛选和搜索。
 - v0.4：完成京剧旗舰展厅、章节播放器、剧种比较台和京剧后台全景。
+- v0.4.1：京剧后台升级为 WebGL 球面播放器，加入 4096×2048 AI 概念全景、空间讲解点和移动端陀螺仪，并保留图文降级。
 
 ### UNESCO 数据口径
 
@@ -47,7 +48,8 @@
 - 唱、念、做、打基本功展示。
 - 带章节、同步文字稿、进度和倍速的导览播放器。
 - 京剧、昆曲、粤剧、越剧横向比较。
-- 支持触控、键盘操作和图文降级的后台全景。
+- 支持触控、键盘、移动端陀螺仪和空间讲解点的 WebGL 球面全景。
+- 全景使用 4096×2048 AI 概念图并明确标注，与历史影像和真实馆藏区分；保留等价图文降级。
 - 本地收藏、足迹和长辈模式。
 
 ### 45 项发现页
@@ -65,6 +67,7 @@
 - React Router
 - Zod
 - Lucide React
+- Photo Sphere Viewer
 - Vitest
 - Playwright
 - ESLint
@@ -79,7 +82,8 @@ ich-mobile-museum/
 ├── .github/workflows/       # GitHub Pages 自动部署
 ├── content/                 # UNESCO、专题馆与展厅 JSON 数据
 ├── docs/                    # 产品、数据库与迭代设计文档
-├── public/assets/           # 可公开分发的图片和媒体资源
+├── public/assets/           # 可公开分发的常规图片和媒体资源
+├── public/panoramas/        # 球面全景分发资源
 ├── src/
 │   ├── app/                 # 应用外壳、路由与用户偏好
 │   ├── components/          # 通用组件
@@ -145,7 +149,7 @@ pnpm test:e2e
 
 - 从首页进入京剧展厅。
 - 浏览专题馆并搜索 45 项 UNESCO 清单。
-- 操作京剧播放器、剧种比较台和全景降级模式。
+- 操作京剧播放器、剧种比较台、WebGL 球面全景和图文降级模式。
 
 Playwright 本地默认调用已安装的 Google Chrome。
 

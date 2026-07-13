@@ -1,11 +1,16 @@
-import { Image as ImageIcon, MoveHorizontal, X } from "lucide-react";
-import { useRef, useState } from "react";
+import { Image as ImageIcon, X } from "lucide-react";
+import { lazy, Suspense, useCallback, useState } from "react";
+
+const SphereViewer = lazy(() =>
+  import("./SphereViewer").then(({ SphereViewer: Component }) => ({
+    default: Component,
+  })),
+);
 
 export const PanoramaViewer = ({ onClose }: { onClose: () => void }) => {
-  const [position, setPosition] = useState(50);
   const [fallback, setFallback] = useState(false);
-  const dragging = useRef<{ start: number; position: number } | null>(null);
-  const move = (next: number) => setPosition(Math.max(0, Math.min(100, next)));
+  const showFallback = useCallback(() => setFallback(true), []);
+
   return (
     <div
       className="panorama-dialog"
@@ -15,7 +20,7 @@ export const PanoramaViewer = ({ onClose }: { onClose: () => void }) => {
     >
       <header>
         <div>
-          <small>360° 漫游</small>
+          <small>360° 球面漫游 · AI 概念全景</small>
           <strong>京剧后台</strong>
         </div>
         <button onClick={onClose} aria-label="关闭全景">
@@ -33,53 +38,25 @@ export const PanoramaViewer = ({ onClose }: { onClose: () => void }) => {
           </figcaption>
         </figure>
       ) : (
-        <div
-          className="panorama-stage"
-          tabIndex={0}
-          onKeyDown={(event) => {
-            if (event.key === "ArrowLeft") move(position - 5);
-            if (event.key === "ArrowRight") move(position + 5);
-          }}
-          onPointerDown={(event) => {
-            dragging.current = { start: event.clientX, position };
-            event.currentTarget.setPointerCapture(event.pointerId);
-          }}
-          onPointerMove={(event) => {
-            if (dragging.current)
-              move(
-                dragging.current.position -
-                  (event.clientX - dragging.current.start) / 5,
-              );
-          }}
-          onPointerUp={() => {
-            dragging.current = null;
-          }}
-          style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}assets/jingju-panorama.png)`,
-            backgroundPosition: `${position}% center`,
-          }}
+        <Suspense
+          fallback={
+            <div className="sphere-loading" role="status">
+              正在准备球面播放器……
+            </div>
+          }
         >
-          <span>
-            <MoveHorizontal />
-            拖动或使用左右方向键
-          </span>
-          <button className="hotspot costume" onClick={() => move(24)}>
-            戏服架
-          </button>
-          <button className="hotspot makeup" onClick={() => move(52)}>
-            化妆台
-          </button>
-          <button className="hotspot music" onClick={() => move(78)}>
-            文武场
-          </button>
-        </div>
+          <SphereViewer onError={showFallback} />
+        </Suspense>
       )}
       <footer>
         <button onClick={() => setFallback((value) => !value)}>
           <ImageIcon />
           {fallback ? "返回全景模式" : "切换图文模式"}
         </button>
-        <p>如果设备不适合运行全景，可随时使用等价图文内容。</p>
+        <p>
+          全景为 AI
+          生成的空间概念图，并非历史影像或真实馆藏；设备不适合运行时可使用等价图文内容。
+        </p>
       </footer>
     </div>
   );
