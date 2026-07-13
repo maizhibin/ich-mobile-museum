@@ -684,6 +684,13 @@ a:focus-visible {
   font-size: 13px;
   font-weight: 700;
 }
+.topic-nav a[aria-current="location"] {
+  color: var(--red);
+  box-shadow: inset 0 -3px var(--red);
+}
+.jingju-topic > section[id] {
+  scroll-margin-top: 58px;
+}
 .jingju-topic h2 {
   margin: 7px 0 14px;
   font:
