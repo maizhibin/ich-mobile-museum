@@ -794,6 +794,9 @@ a:focus-visible {
   border-top: 1px solid #ffffff22;
 }
 .transcript summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   font-weight: 700;
 }
@@ -801,17 +804,78 @@ a:focus-visible {
   color: #ddd0c1;
   line-height: 1.75;
 }
+.audio-error {
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #ffe5df;
+  background: #7b2623;
+  line-height: 1.6;
+}
+.player-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.player-actions > span {
+  max-width: 220px;
+  flex: 1;
+  color: #cbbdac;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: right;
+}
 .restart-button {
   min-height: 40px;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 6px;
   border: 0;
   color: #e3d5c4;
   background: transparent;
+  white-space: nowrap;
 }
 .restart-button svg {
   width: 16px;
+}
+.full-transcript {
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid #ffffff22;
+}
+.full-transcript summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #f4e3ca;
+  font-weight: 700;
+}
+.full-transcript section {
+  padding: 8px 0;
+}
+.full-transcript h3 {
+  margin: 12px 0 4px;
+  font-size: 15px;
+}
+.full-transcript p,
+.full-transcript li {
+  color: #d8cbbc;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.full-transcript ul {
+  padding-left: 20px;
+}
+.full-transcript a {
+  color: #f4cf9e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.full-transcript .guide-rights {
+  padding-top: 12px;
+  border-top: 1px solid #ffffff1f;
 }
 .role-grid,
 .skill-grid {

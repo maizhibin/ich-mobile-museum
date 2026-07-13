@@ -50,8 +50,31 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
   await expect(
     page.getByRole("heading", { name: "京剧", exact: true }),
   ).toBeVisible();
+  await expect
+    .poll(
+      async () => page.locator("audio").evaluate((audio) => audio.readyState),
+      { timeout: 15_000 },
+    )
+    .toBeGreaterThanOrEqual(1);
   await page.getByRole("button", { name: "播放导览" }).click();
-  await expect(page.getByRole("button", { name: "暂停导览" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "暂停导览" })).toBeVisible({
+    timeout: 15_000,
+  });
+  await expect
+    .poll(
+      async () => Number(await page.getByLabel("导览播放进度").inputValue()),
+      { timeout: 15_000 },
+    )
+    .toBeGreaterThan(0);
+  await page.getByRole("button", { name: "从徽班进京到京剧形成" }).click();
+  await expect(
+    page.getByText("京剧不是在某一天突然诞生的。", { exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "暂停导览" }).click();
+  await page.getByText("查看完整文稿与来源").click();
+  await expect(
+    page.getByRole("link", { name: "UNESCO：Peking opera" }),
+  ).toBeVisible();
   await expect(page.getByText("同一方舞台，不同种声音")).toBeVisible();
   await page.getByRole("button", { name: /360° 看京剧后台/ }).click();
   await expect(
