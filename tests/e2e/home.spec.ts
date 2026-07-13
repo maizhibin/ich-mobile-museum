@@ -139,6 +139,8 @@ test("茶文化馆提供可分享的工序流程与地方实践比较", async ({
     /#\/exhibitions\/traditional-tea\?section=process&step=processing$/,
   );
   await expect(page.getByText("第 2 步 · 制茶")).toBeVisible();
+  await page.getByRole("button", { name: "下一张图片" }).click();
+  await expect(page.getByText("手上有判断")).toBeVisible();
   await page.getByRole("tab", { name: "铁观音" }).click();
   await expect(page.getByRole("tabpanel")).toContainText("铁观音");
   await expect(page.getByRole("tabpanel")).toContainText("非独立 UNESCO 项目");

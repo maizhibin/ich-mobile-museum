@@ -8,6 +8,7 @@ import { teaExhibition } from "../content/tea";
 import { ProcessFlow } from "../features/process/ProcessFlow";
 import { TeaPracticeCompare } from "../features/tea/TeaPracticeCompare";
 import { TeaCultureExplorer } from "../features/tea/TeaCultureExplorer";
+import { TeaImageCarousel } from "../features/tea/TeaImageCarousel";
 
 const topics = [
   { id: "intro", label: "初识" },
@@ -104,6 +105,7 @@ export const TeaPage = () => {
               <span>连接日常生活</span>
             </div>
           </div>
+          <TeaImageCarousel gallery={teaExhibition.gallery} />
         </section>
         <section id="process" className="topic-section">
           <ProcessFlow

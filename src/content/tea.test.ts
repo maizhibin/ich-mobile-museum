@@ -15,5 +15,6 @@ describe("茶文化馆内容", () => {
     expect(teaExhibition.makingPaths).toHaveLength(3);
     expect(teaExhibition.socialContexts).toHaveLength(3);
     expect(teaExhibition.teaWare).toHaveLength(4);
+    expect(teaExhibition.gallery).toHaveLength(3);
   });
 });

@@ -148,6 +148,17 @@ export const teaExhibitionSchema = z
     description: z.string().min(1),
     cover: z.string().min(1),
     rights: z.string().min(1),
+    gallery: z
+      .array(
+        z.object({
+          id: z.string().regex(/^[a-z0-9-]+$/),
+          src: z.string().min(1),
+          alt: z.string().min(1),
+          title: z.string().min(1),
+          description: z.string().min(1),
+        }),
+      )
+      .min(3),
     sources: z.array(sourceSchema).min(1),
     process: processFlowSchema,
     regionalPractices: z

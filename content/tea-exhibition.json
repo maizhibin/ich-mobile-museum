@@ -6,8 +6,31 @@
   "updatedAt": "2026-07-13",
   "summary": "从一片鲜叶到一盏清香，认识制茶、饮茶与分享的生活实践。",
   "description": "这一项目涵盖茶园管理、采茶、手工制茶、饮茶与分享等知识、技艺和实践。不同自然条件与地方习俗塑造了丰富多样的茶类与生活方式。",
-  "cover": "assets/museum-hero.png",
-  "rights": "封面为概念插画，用于产品原型展示，不作为历史档案或产地实拍资料。",
+  "cover": "assets/tea-mountain-concept.webp",
+  "rights": "封面与图片流均为 AI 概念插画，用于产品原型展示，不作为历史档案或产地实拍资料。",
+  "gallery": [
+    {
+      "id": "tea-mountain",
+      "src": "assets/tea-mountain-concept.webp",
+      "alt": "AI 概念插画：晨雾中的山地茶园，采茶人与竹匾、盖碗共同构成制茶场景",
+      "title": "从山场到鲜叶",
+      "description": "一片叶子的旅程，先从季节、山场与采摘的经验开始。"
+    },
+    {
+      "id": "tea-processing",
+      "src": "assets/tea-processing-concept.webp",
+      "alt": "AI 概念插画：双手在竹匾上翻动鲜叶，旁边可见炒茶锅",
+      "title": "手上有判断",
+      "description": "翻、揉、看、闻，制茶者会在叶片状态不断变化时调整动作。"
+    },
+    {
+      "id": "tea-wares",
+      "src": "assets/tea-wares-concept.webp",
+      "alt": "AI 概念插画：盖碗、紫砂壶、茶杯与茶盘置于木质茶席上，一双手正递出茶杯",
+      "title": "一席茶的相遇",
+      "description": "器物让注水、分饮与待客有了从容的节奏。"
+    }
+  ],
   "sources": [
     {
       "title": "UNESCO：Traditional tea processing techniques and associated social practices in China",
