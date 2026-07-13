@@ -23,3 +23,24 @@ test("可以浏览专题馆并搜索 45 项清单", async ({ page }) => {
   await expect(page.getByRole("link", { name: /太极拳/ })).toBeVisible();
   await expect(page.getByText("找到 1 项")).toBeVisible();
 });
+
+test("京剧旗舰展厅支持播放器、比较台和全景降级", async ({ page }) => {
+  await page.goto("/ich-mobile-museum/#/exhibitions/jingju");
+  await expect(
+    page.getByRole("heading", { name: "京剧", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "播放导览" }).click();
+  await expect(page.getByRole("button", { name: "暂停导览" })).toBeVisible();
+  await expect(page.getByText("同一方舞台，不同种声音")).toBeVisible();
+  await page.getByRole("button", { name: /360° 看京剧后台/ }).click();
+  await expect(
+    page.getByRole("dialog", { name: "京剧后台全景" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: /切换图文模式/ }).click();
+  await expect(
+    page
+      .getByRole("dialog", { name: "京剧后台全景" })
+      .getByAltText(/京剧演员在后台/),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "关闭全景" }).click();
+});

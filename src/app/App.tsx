@@ -4,6 +4,7 @@ import { ExhibitionPage } from "../routes/ExhibitionPage";
 import { DiscoverPage } from "../routes/DiscoverPage";
 import { ElementPage } from "../routes/ElementPage";
 import { HomePage } from "../routes/HomePage";
+import { JingjuPage } from "../routes/JingjuPage";
 import { MinePage } from "../routes/MinePage";
 import { MuseumPage } from "../routes/MuseumPage";
 import { MuseumsPage } from "../routes/MuseumsPage";
@@ -17,6 +18,7 @@ const AppSurface = () => {
       <div className="app-surface">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/exhibitions/jingju" element={<JingjuPage />} />
           <Route path="/exhibitions/:id" element={<ExhibitionPage />} />
           <Route path="/museums" element={<MuseumsPage />} />
           <Route path="/museums/:id" element={<MuseumPage />} />
