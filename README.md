@@ -6,7 +6,7 @@
 
 ## 当前版本
 
-当前版本为 **v0.4.5**。
+当前版本为 **v0.4.6**。
 
 - v0.2：完成 Vite、React、TypeScript 工程化和 GitHub Pages 部署配置。
 - v0.3：上线 9 个专题馆、45 项 UNESCO 中国项目、名录身份筛选和搜索。
@@ -16,6 +16,7 @@
 - v0.4.3：完成“三分钟认识京剧”原创文稿、约 2 分 58 秒中文合成语音、真实音频播放、逐句同步文字稿和完整来源闭环。
 - v0.4.4：同步文字稿升级为完整文稿高亮与逐句点击跳转；京剧概念全景初始视角调整为正对化妆台。
 - v0.4.5：同步文字稿恢复原有章节段落排版，当前朗读句仅改变文字颜色，保留逐句点击跳转。
+- v0.4.6：修复 GitHub Pages 发布源，改由 Actions 部署构建产物；同步升级工作流 Action 以适配 Node.js 24 运行时。
 
 ### UNESCO 数据口径
 
@@ -187,6 +188,8 @@ Playwright 本地默认调用已安装的 Google Chrome。
 4. 上传 `dist/` 并部署到 GitHub Pages。
 
 Pull Request 只执行验证，不覆盖正式站点。
+
+仓库 **Settings → Pages → Build and deployment** 的 Source 必须选择 **GitHub Actions**；不能选择“Deploy from a branch”，否则 GitHub Pages 会直接发布仓库根目录的开发版 `index.html`。
 
 ## 版本与提交规范
 
