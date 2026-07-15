@@ -30,7 +30,7 @@ export const PanoramaViewer = ({ onClose }: { onClose: () => void }) => {
       {fallback ? (
         <figure className="panorama-fallback">
           <img
-            src={`${import.meta.env.BASE_URL}assets/jingju-backstage.png`}
+            src={`${import.meta.env.BASE_URL}assets/jingju-backstage.webp`}
             alt="京剧演员在后台镜前勾画脸谱，学员在旁观摩"
           />
           <figcaption>

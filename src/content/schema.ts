@@ -47,6 +47,8 @@ const audioGuideChapterSchema = z.object({
 });
 const audioGuideCueSchema = z.object({
   chapterId: z.string().regex(/^[a-z0-9-]+$/),
+  src: z.string().min(1),
+  durationSeconds: z.number().positive(),
   start: z.number().nonnegative(),
   end: z.number().positive(),
   text: z.string().min(1),
@@ -58,7 +60,6 @@ export const audioGuideSchema = z
     language: z.literal("zh-CN"),
     updatedAt: z.iso.date(),
     audio: z.object({
-      src: z.string().min(1),
       mimeType: z.literal("audio/mp4"),
       durationSeconds: z.number().positive(),
       voice: z.string().min(1),

@@ -1,12 +1,14 @@
 {
   "name": "ich-mobile-museum",
   "private": true,
-  "version": "0.5.3",
+  "version": "0.5.5",
   "packageManager": "pnpm@11.12.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "verify:pages": "node scripts/verify-pages-artifact.mjs",
+    "audio:generate": "${COSYVOICE_PYTHON:-$HOME/.cache/codex/CosyVoice/.venv/bin/python} scripts/generate-cosyvoice-guides.py",
     "preview": "vite preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

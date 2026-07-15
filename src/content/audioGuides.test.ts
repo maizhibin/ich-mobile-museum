@@ -11,6 +11,8 @@ describe("京剧三分钟导览素材", () => {
 
   it("章节和文字稿时间点保持递增且相互对应", () => {
     jingjuAudioGuide.cues.forEach((cue, index) => {
+      expect(cue.src).toMatch(/^audio\/guides\/jingju\/\d{3}\.m4a$/);
+      expect(cue.durationSeconds).toBeCloseTo(cue.end - cue.start, 2);
       expect(cue.end).toBeGreaterThan(cue.start);
       if (index > 0) {
         expect(cue.start).toBeGreaterThanOrEqual(

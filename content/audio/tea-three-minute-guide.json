@@ -1,14 +1,13 @@
 {
   "id": "tea-three-minute-guide",
-  "title": "三分钟认识中国传统制茶技艺",
+  "title": "认识中国传统制茶技艺",
   "language": "zh-CN",
-  "updatedAt": "2026-07-13",
+  "updatedAt": "2026-07-15",
   "audio": {
-    "src": "audio/tea-three-minute-guide.m4a",
     "mimeType": "audio/mp4",
-    "durationSeconds": 179.59,
-    "voice": "Tingting（普通话系统合成语音）",
-    "disclosure": "中文合成语音，不是真人馆员、制茶师或传承人录音。",
+    "durationSeconds": 111.16,
+    "voice": "CosyVoice 3（中文神经网络合成语音）",
+    "disclosure": "AI 合成语音，由 CosyVoice 3 生成，不是真人馆员、艺术家或传承人录音。",
     "rights": "根据原创公众教育文稿生成，仅用于本数字博物馆演示。"
   },
   "sources": [
@@ -22,35 +21,147 @@
     }
   ],
   "chapters": [
-    { "id": "leaf", "title": "从一片鲜叶开始", "start": 0 },
-    { "id": "making", "title": "手上有判断", "start": 44.38 },
-    { "id": "paths", "title": "不同的制茶路径", "start": 85.95 },
-    { "id": "sharing", "title": "一杯茶进入关系", "start": 127.63 }
+    {
+      "id": "leaf",
+      "title": "从一片鲜叶开始",
+      "start": 0.0
+    },
+    {
+      "id": "making",
+      "title": "手上有判断",
+      "start": 26.82
+    },
+    {
+      "id": "paths",
+      "title": "不同的制茶路径",
+      "start": 50.86
+    },
+    {
+      "id": "sharing",
+      "title": "一杯茶进入关系",
+      "start": 77.1
+    }
   ],
   "cues": [
     {
       "chapterId": "leaf",
-      "start": 0,
-      "end": 44.2,
-      "text": "欢迎来到中国传统制茶技艺及其相关习俗展厅。请先把注意力放在一片鲜叶上。它从茶园管理、采摘和拣选开始，经过制作者的观察与双手，再在杯盏之间被分享。二零二二年，这一包含制茶技艺与社会实践的项目列入联合国教科文组织人类非物质文化遗产代表作名录。"
+      "src": "audio/guides/tea/001.m4a",
+      "durationSeconds": 4.42,
+      "start": 0.0,
+      "end": 4.42,
+      "text": "欢迎来到中国传统制茶技艺及其相关习俗展厅。"
+    },
+    {
+      "chapterId": "leaf",
+      "src": "audio/guides/tea/002.m4a",
+      "durationSeconds": 2.68,
+      "start": 4.42,
+      "end": 7.1,
+      "text": "请先把注意力放在一片鲜叶上。"
+    },
+    {
+      "chapterId": "leaf",
+      "src": "audio/guides/tea/003.m4a",
+      "durationSeconds": 9.12,
+      "start": 7.1,
+      "end": 16.22,
+      "text": "它从茶园管理、采摘和拣选开始，经过制作者的观察与双手，再在杯盏之间被分享。"
+    },
+    {
+      "chapterId": "leaf",
+      "src": "audio/guides/tea/004.m4a",
+      "durationSeconds": 10.6,
+      "start": 16.22,
+      "end": 26.82,
+      "text": "二零二二年，这一包含制茶技艺与社会实践的项目列入联合国教科文组织人类非物质文化遗产代表作名录。"
     },
     {
       "chapterId": "making",
-      "start": 44.38,
-      "end": 85.7,
-      "text": "采茶不是机械地把叶子摘下。制作者会看芽叶的状态、时令和天气，也会根据想要制作的茶类决定采摘的标准。鲜叶离开枝头后，时间、温度和手上的动作都会改变它的状态。因此，制茶不是一套放之四海皆准的配方，而是一连串基于经验的观察与判断。"
+      "src": "audio/guides/tea/005.m4a",
+      "durationSeconds": 2.4,
+      "start": 26.82,
+      "end": 29.22,
+      "text": "采茶不是机械地把叶子摘下。"
+    },
+    {
+      "chapterId": "making",
+      "src": "audio/guides/tea/006.m4a",
+      "durationSeconds": 7.42,
+      "start": 29.22,
+      "end": 36.64,
+      "text": "制作者会看芽叶的状态、时令和天气，也会根据想要制作的茶类决定采摘的标准。"
+    },
+    {
+      "chapterId": "making",
+      "src": "audio/guides/tea/007.m4a",
+      "durationSeconds": 6.52,
+      "start": 36.64,
+      "end": 43.16,
+      "text": "鲜叶离开枝头后，时间、温度和手上的动作都会改变它的状态。"
+    },
+    {
+      "chapterId": "making",
+      "src": "audio/guides/tea/008.m4a",
+      "durationSeconds": 7.7,
+      "start": 43.16,
+      "end": 50.86,
+      "text": "因此，制茶不是一套放之四海皆准的配方，而是一连串基于经验的观察与判断。"
     },
     {
       "chapterId": "paths",
-      "start": 85.95,
-      "end": 127.3,
-      "text": "在绿茶、乌龙茶和白茶等不同路径中，人们会选择不同的工序重点。萎凋、杀青、做青、揉捻与干燥，并不是每一种茶都按同一顺序、同一尺度完成。比如，制作者会在摇青与静置之间感受叶片的变化，也会在火候、湿度和香气的线索中调整节奏。"
+      "src": "audio/guides/tea/009.m4a",
+      "durationSeconds": 6.72,
+      "start": 50.86,
+      "end": 57.58,
+      "text": "在绿茶、乌龙茶和白茶等不同路径中，人们会选择不同的工序重点。"
+    },
+    {
+      "chapterId": "paths",
+      "src": "audio/guides/tea/010.m4a",
+      "durationSeconds": 8.62,
+      "start": 57.58,
+      "end": 66.2,
+      "text": "萎凋、杀青、做青、揉捻与干燥，并不是每一种茶都按同一顺序、同一尺度完成。"
+    },
+    {
+      "chapterId": "paths",
+      "src": "audio/guides/tea/011.m4a",
+      "durationSeconds": 10.9,
+      "start": 66.2,
+      "end": 77.1,
+      "text": "比如，制作者会在摇青与静置之间感受叶片的变化，也会在火候、湿度和香气的线索中调整节奏。"
     },
     {
       "chapterId": "sharing",
-      "start": 127.63,
-      "end": 179.59,
-      "text": "茶的故事也不止发生在作坊。它在家庭待客、茶馆相聚、节日团聚和仪式中被泡开、递出和分享。制茶师、茶农、采茶工、茶艺师、茶点师、家庭长辈和社区长者，都是这份实践的参与者。今天，当我们端起一杯茶，也可以记住：非遗不是被封存在展柜里的物件，而是仍在被学习、使用和传递的生活经验。"
+      "src": "audio/guides/tea/012.m4a",
+      "durationSeconds": 3.12,
+      "start": 77.1,
+      "end": 80.22,
+      "text": "茶的故事也不止发生在作坊。"
+    },
+    {
+      "chapterId": "sharing",
+      "src": "audio/guides/tea/013.m4a",
+      "durationSeconds": 7.42,
+      "start": 80.22,
+      "end": 87.64,
+      "text": "它在家庭待客、茶馆相聚、节日团聚和仪式中被泡开、递出和分享。"
+    },
+    {
+      "chapterId": "sharing",
+      "src": "audio/guides/tea/014.m4a",
+      "durationSeconds": 10.42,
+      "start": 87.64,
+      "end": 98.06,
+      "text": "制茶师、茶农、采茶工、茶艺师、茶点师、家庭长辈和社区长者，都是这份实践的参与者。"
+    },
+    {
+      "chapterId": "sharing",
+      "src": "audio/guides/tea/015.m4a",
+      "durationSeconds": 13.1,
+      "start": 98.06,
+      "end": 111.16,
+      "text": "今天，当我们端起一杯茶，也可以记住：非遗不是被封存在展柜里的物件，而是仍在被学习、使用和传递的生活经验。"
     }
   ]
 }

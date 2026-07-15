@@ -1,4 +1,9 @@
 import { expect, test } from "@playwright/test";
+import jingjuGuide from "../../content/audio/jingju-three-minute-guide.json" with { type: "json" };
+
+const rolesDescriptionCue = jingjuGuide.cues.find(({ text }) =>
+  text.startsWith("生多扮演男性人物"),
+);
 
 test("可以从首页进入京剧展厅", async ({ page }) => {
   await page.goto("/ich-mobile-museum/");
@@ -68,6 +73,12 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
     )
     .toBeGreaterThan(0);
   await page
+    .locator("audio")
+    .evaluate((audio) => (audio.currentTime = audio.duration - 0.1));
+  await expect(page.locator(".transcript-cue.active")).toHaveText(
+    "演员拿起马鞭，你便知道他正在骑马；抬脚、转身、走一个圆场，千里路就从脚下展开。",
+  );
+  await page
     .locator(".chapter-row")
     .getByRole("button", { name: "从徽班进京到京剧形成" })
     .click();
@@ -100,12 +111,12 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
     .poll(async () =>
       Number(await page.getByLabel("导览播放进度").inputValue()),
     )
-    .toBeGreaterThanOrEqual(72.6);
+    .toBeGreaterThanOrEqual((rolesDescriptionCue?.start ?? 0) - 0.1);
   await expect
     .poll(async () =>
       Number(await page.getByLabel("导览播放进度").inputValue()),
     )
-    .toBeLessThan(73.5);
+    .toBeLessThan((rolesDescriptionCue?.end ?? 0) + 0.1);
   await page.getByText("文稿来源与说明").click();
   await expect(
     page.getByRole("link", { name: "UNESCO：Peking opera" }),

@@ -2,13 +2,12 @@
   "id": "jingju-three-minute-guide",
   "title": "三分钟认识京剧",
   "language": "zh-CN",
-  "updatedAt": "2026-07-13",
+  "updatedAt": "2026-07-15",
   "audio": {
-    "src": "audio/jingju-three-minute-guide.m4a",
     "mimeType": "audio/mp4",
-    "durationSeconds": 178.13,
-    "voice": "Tingting（普通话系统合成语音）",
-    "disclosure": "中文合成语音，不是真人馆员、艺术家或传承人录音。",
+    "durationSeconds": 189.16,
+    "voice": "CosyVoice 3（中文神经网络合成语音）",
+    "disclosure": "AI 合成语音，由 CosyVoice 3 生成，不是真人馆员、艺术家或传承人录音。",
     "rights": "本项目根据原创公众教育版文稿生成，仅用于本数字博物馆演示。"
   },
   "sources": [
@@ -22,177 +21,231 @@
     }
   ],
   "chapters": [
-    { "id": "opening", "title": "锣鼓一响，好戏开场", "start": 0 },
+    {
+      "id": "opening",
+      "title": "锣鼓一响，好戏开场",
+      "start": 0.0
+    },
     {
       "id": "history",
       "title": "从徽班进京到京剧形成",
-      "start": 33.088
+      "start": 35.54
     },
     {
       "id": "roles",
       "title": "生旦净丑，不只是角色标签",
-      "start": 67.637
+      "start": 71.62
     },
     {
       "id": "stage",
       "title": "一桌二椅里的声音与空间",
-      "start": 103.964
+      "start": 110.6
     },
     {
       "id": "heritage",
       "title": "活在今天的非物质文化遗产",
-      "start": 143.437
+      "start": 150.78
     }
   ],
   "cues": [
     {
       "chapterId": "opening",
-      "start": 0,
-      "end": 7.333,
+      "src": "audio/guides/jingju/001.m4a",
+      "durationSeconds": 8.52,
+      "start": 0.0,
+      "end": 8.52,
       "text": "请先想象这样一个舞台：没有高山，也没有城门，只有一张桌子、两把椅子。"
     },
     {
       "chapterId": "opening",
-      "start": 7.513,
-      "end": 16.492,
+      "src": "audio/guides/jingju/002.m4a",
+      "durationSeconds": 9.12,
+      "start": 8.52,
+      "end": 17.64,
       "text": "演员拿起马鞭，你便知道他正在骑马；抬脚、转身、走一个圆场，千里路就从脚下展开。"
     },
     {
       "chapterId": "opening",
-      "start": 16.672,
-      "end": 18.704,
+      "src": "audio/guides/jingju/003.m4a",
+      "durationSeconds": 1.88,
+      "start": 17.64,
+      "end": 19.52,
       "text": "这就是京剧的迷人之处。"
     },
     {
       "chapterId": "opening",
-      "start": 18.884,
-      "end": 27.213,
+      "src": "audio/guides/jingju/004.m4a",
+      "durationSeconds": 9.02,
+      "start": 19.52,
+      "end": 28.54,
       "text": "它不追求把现实原样搬上舞台，而是用声音、动作和观众的想象，共同创造一个世界。"
     },
     {
       "chapterId": "opening",
-      "start": 27.393,
-      "end": 32.488,
+      "src": "audio/guides/jingju/005.m4a",
+      "durationSeconds": 7.0,
+      "start": 28.54,
+      "end": 35.54,
       "text": "唱、念、做、打，也由此成为认识京剧的四把钥匙。"
     },
     {
       "chapterId": "history",
-      "start": 33.088,
-      "end": 35.927,
+      "src": "audio/guides/jingju/006.m4a",
+      "durationSeconds": 3.62,
+      "start": 35.54,
+      "end": 39.16,
       "text": "京剧不是在某一天突然诞生的。"
     },
     {
       "chapterId": "history",
-      "start": 36.107,
-      "end": 45.506,
+      "src": "audio/guides/jingju/007.m4a",
+      "durationSeconds": 10.52,
+      "start": 39.16,
+      "end": 49.68,
       "text": "清代乾隆五十五年，也就是一七九零年起，三庆、四喜、春台、和春等徽班陆续进入北京。"
     },
     {
       "chapterId": "history",
-      "start": 45.686,
-      "end": 53.028,
+      "src": "audio/guides/jingju/008.m4a",
+      "durationSeconds": 6.72,
+      "start": 49.68,
+      "end": 56.4,
       "text": "他们与湖北汉调艺人合作，又吸收昆曲、秦腔以及地方民间曲调和表演方法。"
     },
     {
       "chapterId": "history",
-      "start": 53.208,
-      "end": 60.36,
+      "src": "audio/guides/jingju/009.m4a",
+      "durationSeconds": 8.32,
+      "start": 56.4,
+      "end": 64.72,
       "text": "在长期交流与融合中，新的声腔和表演体系逐渐成熟，后来被称为京剧。"
     },
     {
       "chapterId": "history",
-      "start": 60.54,
-      "end": 67.037,
+      "src": "audio/guides/jingju/010.m4a",
+      "durationSeconds": 6.9,
+      "start": 64.72,
+      "end": 71.62,
       "text": "今天，京剧流传全国，北京、天津和上海仍是重要的演出中心。"
     },
     {
       "chapterId": "roles",
-      "start": 67.637,
-      "end": 72.476,
+      "src": "audio/guides/jingju/011.m4a",
+      "durationSeconds": 7.12,
+      "start": 71.62,
+      "end": 78.74,
       "text": "走近演员，你会遇见生、旦、净、丑等行当。"
     },
     {
       "chapterId": "roles",
-      "start": 72.656,
-      "end": 84.42,
+      "src": "audio/guides/jingju/012.m4a",
+      "durationSeconds": 12.72,
+      "start": 78.74,
+      "end": 91.46,
       "text": "生多扮演男性人物，旦扮演女性人物，净常用鲜明脸谱塑造性格强烈的角色，丑则常以鼻梁上的白色粉块形成独特妆面。"
     },
     {
       "chapterId": "roles",
-      "start": 84.6,
-      "end": 88.194,
+      "src": "audio/guides/jingju/013.m4a",
+      "durationSeconds": 3.92,
+      "start": 91.46,
+      "end": 95.38,
       "text": "但行当并不是简单的性别或性格标签。"
     },
     {
       "chapterId": "roles",
-      "start": 88.374,
-      "end": 93.032,
+      "src": "audio/guides/jingju/014.m4a",
+      "durationSeconds": 4.22,
+      "start": 95.38,
+      "end": 99.6,
       "text": "不同年龄、身份和表演专长，还会继续细分。"
     },
     {
       "chapterId": "roles",
-      "start": 93.212,
-      "end": 103.364,
+      "src": "audio/guides/jingju/015.m4a",
+      "durationSeconds": 11.0,
+      "start": 99.6,
+      "end": 110.6,
       "text": "演员要通过唱腔、念白、眼神、手势、身段和步法，让同一种程式在不同人物身上呈现不同的生命。"
     },
     {
       "chapterId": "stage",
-      "start": 103.964,
-      "end": 105.91,
+      "src": "audio/guides/jingju/016.m4a",
+      "durationSeconds": 3.92,
+      "start": 110.6,
+      "end": 114.52,
       "text": "京剧舞台讲究写意。"
     },
     {
       "chapterId": "stage",
-      "start": 106.09,
-      "end": 114.18,
+      "src": "audio/guides/jingju/017.m4a",
+      "durationSeconds": 8.82,
+      "start": 114.52,
+      "end": 123.34,
       "text": "船桨可以表示行舟，马鞭可以表示骑马，一张桌子有时是书案，有时又能变成城楼。"
     },
     {
       "chapterId": "stage",
-      "start": 114.36,
-      "end": 117.685,
+      "src": "audio/guides/jingju/018.m4a",
+      "durationSeconds": 4.12,
+      "start": 123.34,
+      "end": 127.46,
       "text": "音乐则为这片想象空间定下节奏。"
     },
     {
       "chapterId": "stage",
-      "start": 117.865,
-      "end": 131.35,
+      "src": "audio/guides/jingju/019.m4a",
+      "durationSeconds": 11.92,
+      "start": 127.46,
+      "end": 139.38,
       "text": "以京胡等弦管乐器为主的文场，可以托住唱腔、铺陈情绪；鼓板、锣、钹等打击乐器组成的武场，能够强化动作、转换气氛、推动剧情。"
     },
     {
       "chapterId": "stage",
-      "start": 131.53,
-      "end": 142.837,
+      "src": "audio/guides/jingju/020.m4a",
+      "durationSeconds": 11.4,
+      "start": 139.38,
+      "end": 150.78,
       "text": "服装、脸谱的色彩和纹样也在传递信息，但它们的含义要放回具体人物和剧目中理解，不能只凭一种颜色就给角色下结论。"
     },
     {
       "chapterId": "heritage",
-      "start": 143.437,
-      "end": 150.235,
+      "src": "audio/guides/jingju/021.m4a",
+      "durationSeconds": 8.92,
+      "start": 150.78,
+      "end": 159.7,
       "text": "二零一零年，京剧列入联合国教科文组织人类非物质文化遗产代表作名录。"
     },
     {
       "chapterId": "heritage",
-      "start": 150.415,
-      "end": 160.636,
+      "src": "audio/guides/jingju/022.m4a",
+      "durationSeconds": 10.92,
+      "start": 159.7,
+      "end": 170.62,
       "text": "它的传承长期依靠师徒之间的口传心授、观察和模仿，也离不开院团、学校、研究者与观众的共同参与。"
     },
     {
       "chapterId": "heritage",
-      "start": 160.816,
-      "end": 163.609,
+      "src": "audio/guides/jingju/023.m4a",
+      "durationSeconds": 5.22,
+      "start": 170.62,
+      "end": 175.84,
       "text": "非遗不是被封存在过去的标本。"
     },
     {
       "chapterId": "heritage",
-      "start": 163.789,
-      "end": 169.622,
+      "src": "audio/guides/jingju/024.m4a",
+      "durationSeconds": 5.72,
+      "start": 175.84,
+      "end": 181.56,
       "text": "每一次练功、排演和观看，都可能让传统在今天继续发生。"
     },
     {
       "chapterId": "heritage",
-      "start": 169.802,
-      "end": 178.131,
+      "src": "audio/guides/jingju/025.m4a",
+      "durationSeconds": 7.6,
+      "start": 181.56,
+      "end": 189.16,
       "text": "下一次锣鼓响起时，不妨听一听节奏，看一看身段，也把自己的想象带进那一方舞台。"
     }
   ]

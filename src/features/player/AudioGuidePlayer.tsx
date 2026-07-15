@@ -8,6 +8,11 @@ const playbackRates = [1, 1.25, 0.75] as const;
 const formatTime = (value: number) =>
   `${Math.floor(value / 60)}:${String(Math.floor(value % 60)).padStart(2, "0")}`;
 
+const cueIndexAt = (guide: AudioGuide, position: number) => {
+  const index = guide.cues.findIndex(({ end }) => position < end);
+  return index === -1 ? guide.cues.length - 1 : index;
+};
+
 export const AudioGuidePlayer = ({
   guide = jingjuAudioGuide,
 }: {
@@ -16,19 +21,20 @@ export const AudioGuidePlayer = ({
   const audioRef = useRef<HTMLAudioElement>(null);
   const transcriptRef = useRef<HTMLDivElement>(null);
   const activeCueRef = useRef<HTMLSpanElement>(null);
+  const shouldPlayRef = useRef(false);
+  const pendingLocalPositionRef = useRef(0);
+  const [activeCueIndex, setActiveCueIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [position, setPosition] = useState(0);
-  const [duration, setDuration] = useState(guide.audio.durationSeconds);
   const [speed, setSpeed] = useState<(typeof playbackRates)[number]>(1);
   const [buffering, setBuffering] = useState(true);
   const [audioError, setAudioError] = useState<string | null>(null);
 
+  const duration = guide.audio.durationSeconds;
+  const cue = guide.cues[activeCueIndex];
   const chapter =
     [...guide.chapters].reverse().find(({ start }) => position >= start) ??
     guide.chapters[0];
-  const cue =
-    [...guide.cues].reverse().find(({ start }) => position >= start) ??
-    guide.cues[0];
 
   useEffect(() => {
     const container = transcriptRef.current;
@@ -44,28 +50,62 @@ export const AudioGuidePlayer = ({
       top: Math.max(0, nextTop),
       behavior: reducedMotion ? "auto" : "smooth",
     });
-  }, [cue.start]);
+  }, [activeCueIndex]);
+
+  const playCurrentCue = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.playbackRate = speed;
+    try {
+      await audio.play();
+    } catch {
+      shouldPlayRef.current = false;
+      setPlaying(false);
+      setAudioError("语音暂时无法播放，请稍后重试或阅读完整文稿。");
+    }
+  };
 
   const togglePlayback = async () => {
     const audio = audioRef.current;
     if (!audio) return;
 
     if (!audio.paused) {
+      shouldPlayRef.current = false;
       audio.pause();
       return;
     }
 
-    setAudioError(null);
-    try {
-      await audio.play();
-    } catch {
-      setAudioError("语音暂时无法播放，请稍后重试或阅读完整文稿。");
+    if (position >= duration) {
+      shouldPlayRef.current = true;
+      pendingLocalPositionRef.current = 0;
+      setPosition(0);
+      setActiveCueIndex(0);
+      return;
     }
+    shouldPlayRef.current = true;
+    setAudioError(null);
+    await playCurrentCue();
   };
 
   const seekTo = (nextPosition: number) => {
-    if (audioRef.current) audioRef.current.currentTime = nextPosition;
-    setPosition(nextPosition);
+    const boundedPosition = Math.min(Math.max(0, nextPosition), duration);
+    const nextCueIndex = cueIndexAt(guide, boundedPosition);
+    const nextCue = guide.cues[nextCueIndex];
+    const localPosition = Math.min(
+      Math.max(0, boundedPosition - nextCue.start),
+      nextCue.durationSeconds,
+    );
+    const audio = audioRef.current;
+
+    setPosition(boundedPosition);
+    pendingLocalPositionRef.current = localPosition;
+    if (nextCueIndex === activeCueIndex && audio) {
+      audio.currentTime = localPosition;
+      pendingLocalPositionRef.current = 0;
+      return;
+    }
+    setBuffering(true);
+    setActiveCueIndex(nextCueIndex);
   };
 
   const changeSpeed = () => {
@@ -78,37 +118,54 @@ export const AudioGuidePlayer = ({
   return (
     <section className="guide-player" aria-label={guide.title}>
       <audio
+        key={cue.src}
         ref={audioRef}
-        preload="metadata"
+        src={`${import.meta.env.BASE_URL}${cue.src}`}
+        preload="auto"
         onLoadStart={() => setBuffering(true)}
-        onCanPlay={() => setBuffering(false)}
+        onCanPlay={(event) => {
+          const audio = event.currentTarget;
+          audio.playbackRate = speed;
+          if (pendingLocalPositionRef.current > 0) {
+            audio.currentTime = pendingLocalPositionRef.current;
+            pendingLocalPositionRef.current = 0;
+          }
+          setBuffering(false);
+          if (shouldPlayRef.current) void playCurrentCue();
+        }}
         onWaiting={() => setBuffering(true)}
         onPlaying={() => {
           setPlaying(true);
           setBuffering(false);
         }}
-        onPause={() => setPlaying(false)}
-        onTimeUpdate={(event) => setPosition(event.currentTarget.currentTime)}
-        onLoadedMetadata={(event) => {
-          if (Number.isFinite(event.currentTarget.duration)) {
-            setDuration(event.currentTarget.duration);
-          }
+        onPause={() => {
+          if (!shouldPlayRef.current) setPlaying(false);
         }}
+        onTimeUpdate={(event) =>
+          setPosition(
+            Math.min(cue.start + event.currentTarget.currentTime, duration),
+          )
+        }
         onEnded={() => {
+          const nextCueIndex = activeCueIndex + 1;
+          if (nextCueIndex < guide.cues.length) {
+            pendingLocalPositionRef.current = 0;
+            setPosition(guide.cues[nextCueIndex].start);
+            setBuffering(true);
+            setActiveCueIndex(nextCueIndex);
+            return;
+          }
+          shouldPlayRef.current = false;
           setPlaying(false);
           setPosition(duration);
         }}
         onError={() => {
+          shouldPlayRef.current = false;
           setPlaying(false);
           setBuffering(false);
           setAudioError("语音加载失败，请阅读下方完整文稿。");
         }}
-      >
-        <source
-          src={`${import.meta.env.BASE_URL}${guide.audio.src}`}
-          type={guide.audio.mimeType}
-        />
-      </audio>
+      />
 
       <div className="player-main">
         <button
@@ -182,12 +239,13 @@ export const AudioGuidePlayer = ({
                 {guide.cues
                   .filter(({ chapterId }) => chapterId === item.id)
                   .map((itemCue) => {
-                    const active = cue.start === itemCue.start;
+                    const itemCueIndex = guide.cues.indexOf(itemCue);
+                    const active = activeCueIndex === itemCueIndex;
                     return (
                       <span
                         ref={active ? activeCueRef : undefined}
                         className={`transcript-cue ${active ? "active" : ""}`}
-                        key={itemCue.start}
+                        key={itemCue.src}
                         role="button"
                         tabIndex={0}
                         onClick={() => seekTo(itemCue.start)}
@@ -220,6 +278,7 @@ export const AudioGuidePlayer = ({
         <button
           className="restart-button"
           onClick={() => {
+            shouldPlayRef.current = false;
             audioRef.current?.pause();
             seekTo(0);
           }}
