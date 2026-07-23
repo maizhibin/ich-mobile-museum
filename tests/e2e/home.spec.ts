@@ -122,6 +122,10 @@ test("京剧旗舰展厅支持播放器、比较台和球面全景降级", async
     page.getByRole("link", { name: "UNESCO：Peking opera" }),
   ).toBeVisible();
   await expect(page.getByText("同一方舞台，不同种声音")).toBeVisible();
+  await page.getByRole("button", { name: "下一张京剧图片" }).click();
+  await expect(
+    page.getByLabel("从后台准备到台前呈现").getByText("妆容与脸谱"),
+  ).toBeVisible();
   await page.getByRole("button", { name: /360° 看京剧后台/ }).click();
   await expect(
     page.getByRole("dialog", { name: "京剧后台全景" }),
@@ -170,4 +174,11 @@ test("茶文化馆提供可分享的工序流程与地方实践比较", async ({
   await expect(page.getByText("团聚或婚礼等重要日子里")).toBeVisible();
   await page.getByRole("button", { name: "茶盘", exact: true }).click();
   await expect(page.getByText("承接一席茶的动作")).toBeVisible();
+  await page.getByRole("button", { name: /360° 漫游山间茶室/ }).click();
+  await expect(page.getByRole("dialog", { name: "茶室全景" })).toBeVisible();
+  await expect(page.locator(".psv-navbar")).toBeVisible();
+  await expect(page.getByText("茶席", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: /切换图文模式/ }).click();
+  await expect(page.getByAltText(/茶席上的茶壶/)).toBeVisible();
+  await page.getByRole("button", { name: "关闭全景" }).click();
 });

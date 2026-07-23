@@ -7,6 +7,7 @@ import { IdentityBadge } from "../components/IdentityBadge";
 import { OperaCompare } from "../features/compare/OperaCompare";
 import { PanoramaViewer } from "../features/panorama/PanoramaViewer";
 import { AudioGuidePlayer } from "../features/player/AudioGuidePlayer";
+import { JingjuImageCarousel } from "../features/jingju/JingjuImageCarousel";
 import { getExhibitionFoundation } from "../content/foundations";
 import {
   AtmosphereIntro,
@@ -119,6 +120,7 @@ export const JingjuPage = () => {
               <span>以少胜多</span>
             </div>
           </div>
+          <JingjuImageCarousel />
           <AudioGuidePlayer />
         </section>
         <section

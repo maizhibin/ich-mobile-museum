@@ -14,7 +14,12 @@ export const TeaImageCarousel = ({ gallery }: TeaImageCarouselProps) => {
   };
 
   return (
-    <section className="tea-gallery" aria-labelledby="tea-gallery-title">
+    <section
+      className="tea-gallery"
+      role="region"
+      aria-roledescription="跑马灯"
+      aria-labelledby="tea-gallery-title"
+    >
       <div className="tea-gallery-head">
         <div>
           <p className="eyebrow dark">看见茶的现场</p>
@@ -22,7 +27,11 @@ export const TeaImageCarousel = ({ gallery }: TeaImageCarouselProps) => {
         </div>
         <span>AI 概念插画</span>
       </div>
-      <figure>
+      <figure
+        role="group"
+        aria-roledescription="画面"
+        aria-label={`${activeIndex + 1} / ${gallery.length}：${activeImage.title}`}
+      >
         <img
           src={`${import.meta.env.BASE_URL}${activeImage.src}`}
           alt={activeImage.alt}

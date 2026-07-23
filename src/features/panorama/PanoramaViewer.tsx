@@ -1,5 +1,13 @@
 import { Image as ImageIcon, X } from "lucide-react";
-import { lazy, Suspense, useCallback, useState } from "react";
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { panoramaConfigs, type PanoramaKind } from "./panoramaConfigs";
 
 const SphereViewer = lazy(() =>
   import("./SphereViewer").then(({ SphereViewer: Component }) => ({
@@ -7,35 +15,50 @@ const SphereViewer = lazy(() =>
   })),
 );
 
-export const PanoramaViewer = ({ onClose }: { onClose: () => void }) => {
+export const PanoramaViewer = ({
+  kind = "jingju",
+  onClose,
+}: {
+  kind?: PanoramaKind;
+  onClose: () => void;
+}) => {
   const [fallback, setFallback] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const config = panoramaConfigs[kind];
   const showFallback = useCallback(() => setFallback(true), []);
+
+  useEffect(() => {
+    closeButtonRef.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
 
   return (
     <div
       className="panorama-dialog"
       role="dialog"
       aria-modal="true"
-      aria-label="京剧后台全景"
+      aria-label={config.dialogLabel}
     >
       <header>
         <div>
-          <small>360° 球面漫游 · AI 概念全景</small>
-          <strong>京剧后台</strong>
+          <small>{config.eyebrow}</small>
+          <strong>{config.title}</strong>
         </div>
-        <button onClick={onClose} aria-label="关闭全景">
+        <button ref={closeButtonRef} onClick={onClose} aria-label="关闭全景">
           <X />
         </button>
       </header>
       {fallback ? (
         <figure className="panorama-fallback">
           <img
-            src={`${import.meta.env.BASE_URL}assets/jingju-backstage.webp`}
-            alt="京剧演员在后台镜前勾画脸谱，学员在旁观摩"
+            src={`${import.meta.env.BASE_URL}${config.fallbackImage}`}
+            alt={config.fallbackAlt}
           />
-          <figcaption>
-            图文降级模式：后台的戏服、化妆与乐器共同支撑一场演出。
-          </figcaption>
+          <figcaption>{config.fallbackCaption}</figcaption>
         </figure>
       ) : (
         <Suspense
@@ -45,7 +68,7 @@ export const PanoramaViewer = ({ onClose }: { onClose: () => void }) => {
             </div>
           }
         >
-          <SphereViewer onError={showFallback} />
+          <SphereViewer config={config} onError={showFallback} />
         </Suspense>
       )}
       <footer>
@@ -53,10 +76,7 @@ export const PanoramaViewer = ({ onClose }: { onClose: () => void }) => {
           <ImageIcon />
           {fallback ? "返回全景模式" : "切换图文模式"}
         </button>
-        <p>
-          全景为 AI
-          生成的空间概念图，并非历史影像或真实馆藏；设备不适合运行时可使用等价图文内容。
-        </p>
+        <p>{config.disclosure}</p>
       </footer>
     </div>
   );

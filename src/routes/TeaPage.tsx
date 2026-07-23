@@ -1,5 +1,5 @@
-import { Heart } from "lucide-react";
-import { useEffect } from "react";
+import { Heart, Rotate3D } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useUserPreferences } from "../app/UserPreferences";
 import { AppHeader } from "../components/AppHeader";
@@ -11,6 +11,7 @@ import { ProcessFlow } from "../features/process/ProcessFlow";
 import { TeaPracticeCompare } from "../features/tea/TeaPracticeCompare";
 import { TeaCultureExplorer } from "../features/tea/TeaCultureExplorer";
 import { TeaImageCarousel } from "../features/tea/TeaImageCarousel";
+import { PanoramaViewer } from "../features/panorama/PanoramaViewer";
 import { getExhibitionFoundation } from "../content/foundations";
 import {
   AtmosphereIntro,
@@ -27,6 +28,7 @@ const topics = [
 
 export const TeaPage = () => {
   const foundation = getExhibitionFoundation("traditional-tea");
+  const [panorama, setPanorama] = useState(false);
   const { addHistory, favorites, toggleFavorite } = useUserPreferences();
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTopic = searchParams.get("section");
@@ -115,6 +117,17 @@ export const TeaPage = () => {
             </div>
           </div>
           <TeaImageCarousel gallery={teaExhibition.gallery} />
+          <button
+            className="immersive-panel tea-immersive-panel"
+            type="button"
+            onClick={() => setPanorama(true)}
+          >
+            <Rotate3D />
+            <span>
+              <strong>360° 漫游山间茶室</strong>
+              <small>支持拖动、键盘、陀螺仪和图文降级</small>
+            </span>
+          </button>
           <AudioGuidePlayer guide={teaAudioGuide} />
         </section>
         <section id="process" className="topic-section">
@@ -147,6 +160,9 @@ export const TeaPage = () => {
         </section>
         {foundation && <ExhibitionTakeaway foundation={foundation} />}
       </div>
+      {panorama && (
+        <PanoramaViewer kind="tea" onClose={() => setPanorama(false)} />
+      )}
     </>
   );
 };
